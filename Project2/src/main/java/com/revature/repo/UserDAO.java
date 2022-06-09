@@ -37,6 +37,7 @@ public class UserDAO {
 				return null;
 			}
 		} catch(Exception e) {
+			HibernateUtil.closeSession();
 			e.printStackTrace();
 			return null;
 		}
@@ -50,6 +51,7 @@ public class UserDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		HibernateUtil.closeSession();
 	}
 	
 	public void updateUsername(User user, String username) {
