@@ -1,11 +1,27 @@
 package com.revature.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "product")
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Product_ID")
 	private int product_ID;
+	@Column(unique = true, nullable = false)
 	private String product_name;
+	@Column(nullable = false)
 	private String description;
+	@Column(nullable = false)
 	private double price;
+	@Column(nullable = false)
 	private int quantity;
+	
 	public int getProduct_ID() {
 		return product_ID;
 	}
