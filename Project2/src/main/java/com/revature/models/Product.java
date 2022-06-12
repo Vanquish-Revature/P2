@@ -1,11 +1,36 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="product")
+
+	
 public class Product {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int product_ID;
+	@Column(nullable = false, unique = true, name = "plant_name") //unique constraint
 	private String product_name;
 	private String description;
+	//@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@JoinColumn(name = "user_id") //This is how we establish a foreign key relationship with another table
 	private double price;
 	private int quantity;
+	
+	
+	
+	//boiler plate code
 	public int getProduct_ID() {
 		return product_ID;
 	}

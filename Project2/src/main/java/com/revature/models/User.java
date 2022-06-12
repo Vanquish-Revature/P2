@@ -1,9 +1,25 @@
 package com.revature.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "user")
+
 public class User {
+	@Id //This will label "id" as a primary key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //This will make our Primary key serialized
+	@Column(name = "user_id", unique = true)
 	private int user_ID;
+	@Column(unique = true, nullable = false)
 	private String username;
 	private String password;
+	
+	
 	//private double bank;
 	public int getUser_ID() {
 		return user_ID;
