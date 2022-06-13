@@ -1,9 +1,24 @@
 package com.revature.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "User")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
 	private int user_ID;
+	@Column(unique = true, nullable = false)
 	private String username;
+	@Column(unique = true, nullable = false)
 	private String password;
+	@Column(unique = false, nullable = false)
 	private double account;
 	public int getUser_ID() {
 		return user_ID;
