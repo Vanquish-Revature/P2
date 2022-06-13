@@ -36,7 +36,7 @@ public void insertProduct(Product product) {
 	}
 	
 	//will this be in cartDAO??? idk ---vi
-	public List<Product> getProductByUserID(int user_ID){
+	public List<Product> getProductByUserId(int user_ID){
 		Session ses = HibernateUtil.getSession(); //opens the session
 		Query q = ses.createQuery("FROM Product p WHERE p.product.id = ?0"); 
 		//The 0 is what we are targeting to change with our setParameter
@@ -77,5 +77,6 @@ public void insertProduct(Product product) {
 			HibernateUtil.closeSession(); //closes the session
 		}
 		
+		// checkout item remove an amount from quantity.
 	
 }
