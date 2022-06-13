@@ -1,0 +1,20 @@
+
+
+<ul class="plants">
+  <li *ngFor="let plant of plants">
+  
+    <span class="badge">{{plant.id}}</span> {{plant.name}}
+    
+  </li>
+</ul>
+
+<!-- <app-plant-detail [plant]="selectedPlant"></app-plant-detail> -->
+
+<!-- <div *ngIf="selectedPlant">
+  <h2>{{selectedPlant.name | uppercase}} Details</h2>
+  <div>id: {{selectedPlant.id}}</div>
+  <div>
+    <label for="hero-name">Plant name: </label>
+    <input id="hero-name" [(ngModel)]="selectedPlant.name" placeholder="name">
+  </div>
+</div> -->
