@@ -1,14 +1,21 @@
 package com.revature.models;
 
 import java.util.List;
-public class Invoice {
+public class Cart {
 	private int id;
 	private String billingInfo;
-	public List<Product> productsPurchased;
+	private List<Product> productsPurchased;
+	private int amount;
 	private double subtotal;
 	private double discount;
 	private double total;
 	
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public int getId() { 
 		return id;
 	}
@@ -45,15 +52,16 @@ public class Invoice {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public Invoice() {
+	public Cart() {
 		super();
 	}
-	public Invoice(int id, String billingInfo, List<Product> productsPurchased, double subtotal, double discount,
-			double total) {
+	public Cart(int id, String billingInfo, List<Product> productsPurchased, int amount, double subtotal,
+			double discount, double total) {
 		super();
 		this.id = id;
 		this.billingInfo = billingInfo;
 		this.productsPurchased = productsPurchased;
+		this.amount = amount;
 		this.subtotal = subtotal;
 		this.discount = discount;
 		this.total = total;
@@ -61,7 +69,8 @@ public class Invoice {
 	@Override
 	public String toString() {
 		return "Invoice [id=" + id + ", billingInfo=" + billingInfo + ", productsPurchased=" + productsPurchased
-				+ ", subtotal=" + subtotal + ", discount=" + discount + ", total=" + total + "]";
+				+ ", amount=" + amount + ", subtotal=" + subtotal + ", discount=" + discount + ", total=" + total + "]";
 	}
+	
 
 }
