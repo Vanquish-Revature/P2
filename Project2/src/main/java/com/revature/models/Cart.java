@@ -1,14 +1,39 @@
 package com.revature.models;
 
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "Cart")
 public class Cart {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(unique = true, nullable = false)
 	private String billingInfo;
+	@Column(unique = false, nullable = false)
 	private List<Product> productsPurchased;
+	@Column(unique = false, nullable = false)
 	private int amount;
+	@Column(unique = false, nullable = false)
 	private double subtotal;
+	@Column(unique = false, nullable = false)
 	private double discount;
+	@Column(unique = false, nullable = false)
 	private double total;
+	@Column(unique = false, nullable = false)
 	
 	public int getAmount() {
 		return amount;
