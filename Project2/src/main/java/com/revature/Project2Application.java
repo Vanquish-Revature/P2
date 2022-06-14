@@ -34,7 +34,8 @@ public class Project2Application {
 	
 	
 //	Lets get a list of all of our plants and see what the console says
-//	List<Product> allProduct = plant.getAllProduct();{
+//	List<Product> allProduct = plant.getAllProduct();
+
 //	for(Product p : allProduct)
 //	{
 //		System.out.println(p);
