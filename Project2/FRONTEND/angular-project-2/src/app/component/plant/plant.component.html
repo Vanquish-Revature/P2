@@ -2,9 +2,9 @@
 
 <ul class="plants">
   <li *ngFor="let plant of plants">
-  
+    <a routerLink="/detail/{{plant.id}}">
     <span class="badge">{{plant.id}}</span> {{plant.name}}
-    
+    </a>
   </li>
 </ul>
 

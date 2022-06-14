@@ -26,7 +26,12 @@
       </button>
       <!-- <img src="{{item.image}}" alt=""> -->
       <img src="assets/images/cactus.jpg" alt="cactus">
-      <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{plant.name}}</h5>
+      <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
+        <a
+          routerLink="/detail/{{plant.id}}">
+          {{plant.name}}
+        </a>
+      </h5>
       <p><strong>Price:</strong> ${{plant.price}}</p>
     </div>
   </ng-container>
@@ -38,4 +43,4 @@
     {{plant.name}}
   </a> -->
 <!-- </div> -->
-</div>
+<!-- </div> -->

@@ -8,20 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-<<<<<<< HEAD
 @Table(name = "User")
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_ID")
-=======
-@Table (name = "user")
+//public class User {
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "user_ID")
+//
+//@Table (name = "user")
 
 public class User {
 	@Id //This will label "id" as a primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //This will make our Primary key serialized
 	@Column(name = "user_id", unique = true)
->>>>>>> 8ac4d79f1cb43792710323116c48bf2bef846c65
 	private int user_ID;
 	@Column(unique = true, nullable = false)
 	private String username;

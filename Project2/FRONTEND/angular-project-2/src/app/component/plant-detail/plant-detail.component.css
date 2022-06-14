@@ -21,3 +21,78 @@ label {
     color: #ccc;
     cursor: auto;
   }
+  .plant-title
+  {
+    /* border-style: solid;
+    border-color: black; */
+    position: absolute;
+    top: 120px;
+    right: 853px;
+    font-size: 30px;
+    z-index: 1;
+  }
+  .plat_img_box
+  {
+    /* border-style: solid;
+    border-color:black; */
+    position:absolute;
+    top:130px;
+    left:90px;
+  }
+  .plant_image
+  {
+    max-width: 50%;
+    height:auto;
+    top: -50px;
+    z-index: -1;
+  }
+  .description
+  {
+    /* border-style: solid;
+    border-color: black; */
+    position: absolute;
+    top: 170px;
+    right: 400px;
+    text-align: right;
+    height: auto;
+    width: 40%; 
+    z-index: 1;
+  }
+  .plant_description
+  {
+    font-size: 25px;
+  }
+  .cost
+  {
+    /* border-style: solid;
+    border-color: black; */
+    position: absolute;
+    top:330px;
+    right: 66.2em;
+
+  }
+  .plant_amount
+  {
+    position:absolute;
+    top:330px;
+    right: 25em;
+
+  }
+  .submit_button
+  {
+    position: absolute;
+    top:390px;
+    right: 25em;
+  }
+  body
+  {
+    overflow: hidden;
+  }
+.home
+{
+  margin-right: auto;
+}
+.user
+{
+  margin-right:50em;
+}

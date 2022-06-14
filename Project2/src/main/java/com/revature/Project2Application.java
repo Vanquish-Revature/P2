@@ -10,13 +10,12 @@ import com.revature.repo.ProductDAO;
 
 @SpringBootApplication
 public class Project2Application {
-
 	public static void main(String[] args) {
 		SpringApplication.run(Project2Application.class, args);
 		
 		System.out.println("Hello There");
-	}
-
+	
+		
 			
 
 	ProductDAO plant = new ProductDAO();
@@ -34,12 +33,14 @@ public class Project2Application {
 	plant.insertProduct(p5);
 	
 	
-	//Lets get a list of all of our plants and see what the console says
-	List<Product> allProduct = plant.getAllProduct();{
-	for(Product p : allProduct) {
-		System.out.println(p);
-	 }
+//	Lets get a list of all of our plants and see what the console says
+//	List<Product> allProduct = plant.getAllProduct();{
+//	for(Product p : allProduct)
+//	{
+//		System.out.println(p);
+//	 }
 	
+//	}
 	}
 }		
 			
