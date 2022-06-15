@@ -2,12 +2,12 @@
 <nav>
   <div class="navbar navbar-light bg-light shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
-      <strong style="font-size: 30px;">Rainforest</strong>
+      <button type="button">
+        <a routerLink="/dashboard">
+          <strong style="font-size: 30px;">Rainforest</strong>
+        </a>
+      </button>
     </div>
-    <button class = "home">
-      <a href = "../dashboard/dashboard.component.html" role="Button">Home</a>
-    </button>
-    <!-- <a class="btn btn-primary" href="./dashboard/dashboard.component.html" role="button">Home</a> -->
     <button class="user">
       <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
     </button>
@@ -25,7 +25,7 @@
       <!-- <label id="plant-name" [(ngModel)]="plant.name" placeholder="name"></label> -->
     </div>
     <div class = "plat_img_box">
-        <img class = "plant_image" src = {{plant.imglocation}} alt = "image"> 
+        <img class = "plant_image" src = {{plant.image}} alt = "image"> 
     </div>
     <div class = "description">
       <p class = "plant_description"> {{plant.description}}</p>
