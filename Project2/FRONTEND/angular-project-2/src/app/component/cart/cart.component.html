@@ -1,0 +1,28 @@
+<nav>
+    <div class="navbar navbar-light bg-light shadow-sm">
+      <div class="navbar-brand align-item-center d-flex">
+        <strong style="font-size: 30px;">Rainforest</strong>
+      </div>
+      <button class="user">
+        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      </button>
+      <button class="cart">
+        <a class="img" routerLink="/cart">
+        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+        </a>
+    </button>
+    </div>
+  </nav>
+<ng-container *ngIf="plants.length ==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Cart</h5>
+        </div>
+        <div class="center">
+            <!-- <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt=""> -->
+            <h4>Your cart is empty!</h4>
+            <h6>Add items to it now</h6>
+            <button routerLink="/plants" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
