@@ -37,7 +37,7 @@ public class UserController {
 		try {
 			ud.register(user);
 			return ResponseEntity.ok(user);
-		} catch(Exception e) {
+		} catch(Exception e) { 
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 		}
 	}
