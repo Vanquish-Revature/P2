@@ -88,6 +88,10 @@ label {
   {
     overflow: hidden;
   }
+  button {
+    border: none;
+    background-color: transparent;
+   }
 /* .home
 {
   margin-right: auto;

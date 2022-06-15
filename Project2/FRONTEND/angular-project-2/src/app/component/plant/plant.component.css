@@ -1,6 +1,6 @@
 
 
-.plants {
+/* .plants {
   margin: 100px;
   list-style-type: none;
   padding: 0;
@@ -52,4 +52,65 @@
   text-align: right;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+} */
+.container {
+  margin-top: 100px;
+}
+
+h2 {
+    text-align: center;
+  }
+  
+  .plants-menu {
+    padding: 0;
+    margin: auto;
+    max-width: 1000px;
+  
+    /* flexbox */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  a:hover {
+    color: blue;
+  } 
+
+  .card {
+    padding: 50px;
+    margin: 45px;
+    text-align: center;
+    border-color: black;
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.user {
+  float: left;
+}
+
+.card-basket {
+  float: left;
+}
+
+.img {
+  background-color: transparent;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
