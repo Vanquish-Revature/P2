@@ -29,12 +29,6 @@ export class PlantDetailComponent implements OnInit {
       .subscribe(plant => this.plant = plant);
   }
 
-  // getImage() : string
-  // {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   return this.plantService
-  // }
-
   goBack(): void {
     this.location.back();
   }
