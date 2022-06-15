@@ -1,1 +1,9 @@
 /.metadata/
+Project2/target/classes/com/revature/models/Cart.class
+Project2/target/classes/com/revature/models/User.class
+Project2/target/classes/com/revature/repo/UserDAO.class
+Project2/target/classes/com/revature/services/UserService.class
+Project2/target/classes/META-INF/maven/com.revature/Project2/pom.properties
+Project2/target/classes/com/revature/models/User.class
+Project2/target/classes/com/revature/repo/UserDAO.class
+Project2/target/classes/com/revature/services/UserService.class
