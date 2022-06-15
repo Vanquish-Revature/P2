@@ -19,7 +19,7 @@ export class PlantService {
 
   getPlant(id: number): Observable<Plant> {
     const plant = Plants.find(p => p.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    this.messageService.add(`PlantService: fetched plant id=${id}`);
     return of(plant);
 }
 }
