@@ -9,6 +9,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
+//public class User {
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "user_ID")
+//
+//@Table (name = "user")
+
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
