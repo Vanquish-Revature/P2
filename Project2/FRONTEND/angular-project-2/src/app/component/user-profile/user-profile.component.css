@@ -1,0 +1,41 @@
+.picture
+{
+    height: auto;
+    width: 50%;
+    align-self: center;
+    
+}
+.fName
+{
+    font-size: 30px;
+    text-align: center;
+}
+
+.lName
+{
+    font-size: 30px;
+    text-align: center;
+}
+button {
+  border: none;
+  background-color: transparent;
+ }
+ .card {
+    padding: 50px;
+    margin: 45px;
+    text-align: center;
+    border-color: black;
+    left: 700px;
+    border-radius: 50px;
+    border-width: 5px;
+}
+.btn
+{
+    background-color: black;
+}
+
+.email
+{
+    font-size: 30px;
+    text-align: center;
+}
