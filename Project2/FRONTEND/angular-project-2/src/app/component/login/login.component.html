@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="login.component.css">
+<nav>
+    <div class="navbar navbar-light bg-light shadow-sm">
+      <div class="navbar-brand align-item-center d-flex">
+        <a routerLink="/dashboard">
+            <strong style="font-size: 30px;">Rainforest</strong>
+        </a>
+      </div>
+      <button class="user">
+        <a class = "userpic" routerLink = "/userProfile">
+          <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+        </a>
+      </button>
+      <button class="cart">
+        <a class="img" routerLink="/cart">
+          <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+        </a>
+    </button>
+    </div>
+</nav>
+<body>
+    <div class="card col-md-3">
+        <h3> Log-in Portal</h3>
+        <form>
+            <label for = "username"> Username: </label><br>
+            <input type = "text" id="username"> 
+            <br>
+            <br>
+            <label for = "password"> Password: </label><br>
+            <input type = "text" id="password"> 
+            <br>
+            <br>
+            <button type = "button" class ="btn">
+                <input type = "submit">
+            </button>
+            <button type = "button" class ="btn">
+                <a routerLink="/register">REGISTER</a>
+            </button>
+        </form>
+    </div>
+</body>
