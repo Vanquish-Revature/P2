@@ -1,0 +1,14 @@
+button {
+    border: none;
+    background-color: transparent;
+   }
+   .card {
+    padding: 3.125em;
+    margin: 2.8125em;
+    text-align: center;
+    border-color: black;
+    left: 43.75em;
+    border-radius: 50px;
+    border-width: 5px;
+}
+

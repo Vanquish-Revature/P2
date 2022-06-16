@@ -9,41 +9,36 @@
       </button>
     </div>
     <button class="user">
-      <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      <a class = "userpic" routerLink = "/userProfile">
+        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      </a>
     </button>
-    <button class="cart">
-      <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
-  </button>
+    <a class="img" routerLink="/cart">
+      <button class="cart">
+        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+    </button>
+    </a>
   </div>
 </nav>
 <body>
   <div *ngIf="plant">
-    <!-- <h2>{{plant.name | uppercase}} Details</h2> -->
-    <!-- <div><span>id: </span>{{plant.id}}</div> -->
-    <div class = "plant-title">
-      <label for="plant-name">Plant name:{{plant.name}} </label>
-      <!-- <label id="plant-name" [(ngModel)]="plant.name" placeholder="name"></label> -->
-    </div>
-    <div class = "plat_img_box">
+    <div class="card col-md-3">
+        <label for="plant-name">Plant name:{{plant.name}} </label>
         <img class = "plant_image" src = {{plant.image}} alt = "image"> 
-    </div>
-    <div class = "description">
-      <p class = "plant_description"> {{plant.description}}</p>
-    </div>
-    <div class = "cost">
-      <label for = "plant-price"> Price: ${{plant.price}}</label>
-    </div>
-    <form>
-      <div class = "plant_amount">
-        <label for="quantity"> Quantity: </label>
-        <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10">
-        <!-- use input type = "number" and step =1 -->
-      </div>
-      <div class = "submit_button">
-        <input type = "submit">
-        <!-- submit button -->
-      </div>
-    </form>
-    <!-- <button type="button" (click)="goBack()">go back</button> -->
-  </div>
+        <p class = "plant_description"> {{plant.description}}</p>
+        <label for = "plant-price"> Price: ${{plant.price}}</label>
+        <form>
+            <label for="quantity"> Quantity:</label>
+            <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10">
+            <br>
+            <br>
+            <input type = "submit">
+        </form>
+        <button type="button">
+          <a routerLink="/plants">
+            Go Back
+          </a>
+        </button>
+    </div>     
+  </div>  
 </body>
