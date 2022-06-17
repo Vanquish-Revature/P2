@@ -1,2 +1,7 @@
 /.metadata/
 Project2/target
+Project2/target/classes/com/revature/services/UserService.class
+Project2/target/classes/com/revature/repo/UserDAO.class
+Project2/target/classes/com/revature/repo/ProductDAO.class
+Project2/target/classes/com/revature/models/User.class
+Project2/target/classes/com/revature/controllers/UserController.class
