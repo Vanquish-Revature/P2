@@ -53,19 +53,19 @@ public class OrderController {
 		}
 	}
 	
-	@PutMapping
-	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
-		if(p.getProduct_name()==null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
-		} else {
-			cart = oService.addToCart(p);
-			return ResponseEntity.status(202).body(cart);
-		}
-	}
+//	@PutMapping
+//	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
+//		if(p.getProduct_name()==null) {
+//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
+//		} else {
+//			cart = oService.addToCart(p);
+//			return ResponseEntity.status(202).body(cart);
+//		}
+//	}
 	
 	@PostMapping
-	public ResponseEntity<String> checkout() {
-		if(oService.checkout()==1) {
+	public ResponseEntity<String> submitOrder(Order orders) {
+		if(oService.submitOrder(null)==1) {
 			return ResponseEntity.status(HttpStatus.OK).body("Checkout Successful!");
 		} else {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Checkout Unsuccessful!");

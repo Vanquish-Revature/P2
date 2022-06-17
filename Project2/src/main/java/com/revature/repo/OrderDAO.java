@@ -11,10 +11,11 @@ import com.revature.utilities.HibernateUtil;
 
 public class OrderDAO {
 	
-	public void submitOrder(Order orders) {
+	public int submitOrder(Order orders) {
 		Session ses = HibernateUtil.getSession();
 		ses.save(orders);
 		HibernateUtil.closeSession();
+		return 0;
 	}
 	
 	public List<Order> getAllOrders() {
@@ -31,14 +32,14 @@ public class OrderDAO {
 		return order; 
 	}
 	
-	public List<Order> getOrdersByProductId(int id){
-		Session ses = HibernateUtil.getSession(); 
-		Query q = ses.createQuery("FROM orders o WHERE o.product.id = ?0");
-		q.setParameter(0, id);
-		List<Order> orderList = q.getResultList();
-		HibernateUtil.closeSession();
-		return orderList;
-	}
+//	public List<Order> getOrdersByProductId(int id){
+//		Session ses = HibernateUtil.getSession(); 
+//		Query q = ses.createQuery("FROM orders o WHERE o.product.id = ?0");
+//		q.setParameter(0, id);
+//		List<Order> orderList = q.getResultList();
+//		HibernateUtil.closeSession();
+//		return orderList;
+//	}
 	
 	//update order?
 	
