@@ -19,7 +19,7 @@ import com.revature.repo.UserDAO;
 @CrossOrigin
 public class UserController {
 	// Login, register, update password, update username, get all, get by id
-	private UserDAO ud;
+	public static UserDAO ud;
 	@Autowired
 	public UserController(UserDAO dao) {
 		this.ud = dao;
