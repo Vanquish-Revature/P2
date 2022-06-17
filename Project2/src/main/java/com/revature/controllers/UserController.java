@@ -41,17 +41,13 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 		}
 	}
-//	public ResponseEntity<User> updatePassword(@PathVariable("user")User user){ //this is currently unneeded
-//		if(user == ud.getUserById(user.getUser_ID())) {
-//			try {
-//				ud.updatePassword(user, user.getPassword());
-//				return ResponseEntity.ok(user);
-//			} catch(Exception e) {
-//				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
-//			}
-//			
-//		} else {
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
-//		}
-//	}
+	@GetMapping("/updateUser")
+	public ResponseEntity<User> updateUser(@PathVariable("user")User user, String password, String username){ 
+			try {
+				ud.updateUser(user, password, username);
+				return ResponseEntity.ok(user);
+			} catch(Exception e) {
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
+			}
+	}
 }
