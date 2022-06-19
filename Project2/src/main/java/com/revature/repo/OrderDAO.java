@@ -2,14 +2,19 @@ package com.revature.repo;
 
 import java.util.List;
 
+
 import javax.persistence.Query;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.models.Order;
 import com.revature.utilities.HibernateUtil;
 
+
+
 public class OrderDAO {
+	
 	
 	public int submitOrder(Order orders) {
 		Session ses = HibernateUtil.getSession();
@@ -20,7 +25,7 @@ public class OrderDAO {
 	
 	public List<Order> getAllOrders() {
 		Session ses = HibernateUtil.getSession();
-		List<Order> orderList = ses.createQuery("FROM orders").list();
+		List<Order> orderList = ses.createQuery("FROM Order").list();
 		HibernateUtil.closeSession();
 		return orderList;
 	}

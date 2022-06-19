@@ -31,7 +31,9 @@ import com.revature.services.OrderService;
 @CrossOrigin
 public class OrderController {
 	ArrayList<Product> cart;
+
 	private OrderService oService;
+
 	
 	@Autowired
 	public OrderController(OrderService os) {

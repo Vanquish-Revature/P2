@@ -24,8 +24,8 @@ public class Cart {
 	@Column(unique = true, nullable = false)
 	private String billingInfo;
 	@Column(unique = false, nullable = false)
-	private List<Product> productsPurchased;
-	@Column(unique = false, nullable = false)
+//	private List<Product> productsPurchased;
+//	@Column(unique = false, nullable = false)
 	private int amount;
 	@Column(unique = false, nullable = false)
 	private double subtotal;
@@ -47,12 +47,12 @@ public class Cart {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<Product> getProductsPurchased() {
-		return productsPurchased;
-	}
-	public void setProductsPurchased(List<Product> productsPurchased) {
-		this.productsPurchased = productsPurchased;
-	}
+//	public List<Product> getProductsPurchased() {
+//		return productsPurchased;
+//	}
+//	public void setProductsPurchased(List<Product> productsPurchased) {
+//		this.productsPurchased = productsPurchased;
+//	}
 	public String getBillingInfo() {
 		return billingInfo;
 	}
@@ -85,7 +85,7 @@ public class Cart {
 		super();
 		this.id = id;
 		this.billingInfo = billingInfo;
-		this.productsPurchased = productsPurchased;
+//		this.productsPurchased = productsPurchased;
 		this.amount = amount;
 		this.subtotal = subtotal;
 		this.discount = discount;
@@ -93,8 +93,8 @@ public class Cart {
 	}
 	@Override
 	public String toString() {
-		return "Invoice [id=" + id + ", billingInfo=" + billingInfo + ", productsPurchased=" + productsPurchased
-				+ ", amount=" + amount + ", subtotal=" + subtotal + ", discount=" + discount + ", total=" + total + "]";
+		return "Invoice [id=" + id + ", billingInfo=" + billingInfo + ", productsPurchased=" + 
+				 ", amount=" + amount + ", subtotal=" + subtotal + ", discount=" + discount + ", total=" + total + "]";
 	}
 	
 

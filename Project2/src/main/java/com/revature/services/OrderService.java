@@ -16,6 +16,8 @@ import com.revature.repo.ProductDAO;
 public class OrderService {
 	
 	static ArrayList<Product> cartList = new ArrayList<Product>();
+	
+	
 	OrderDAO odao = new OrderDAO();
 	private Order o;
 	

@@ -19,11 +19,11 @@ import com.revature.repo.UserDAO;
 @CrossOrigin
 public class UserController {
 	// Login, register, update password, update username, get all, get by id
-	public static UserDAO ud;
-	@Autowired
-	public UserController(UserDAO dao) {
-		this.ud = dao;
-	}	
+	UserDAO ud;
+//	@Autowired
+//	public UserController(UserDAO dao) {
+//		this.ud = dao;
+//	}	
 	@GetMapping("/login")
 	public ResponseEntity<User> login(@PathVariable("user")User user){
 		if(user == ud.getUserById(user.getUser_ID())) {
