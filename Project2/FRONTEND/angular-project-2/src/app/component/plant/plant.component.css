@@ -1,55 +1,64 @@
-
-
-.plants {
-  margin: 100px;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-}
-.plants li {
-  position: relative;
-  cursor: pointer;
+.container {
+  margin-top: 100px;
 }
 
-.plants li:hover {
-  left: .1em;
+h2 {
+    text-align: center;
+  }
+  
+  .plants-menu {
+    padding: 0;
+    margin: auto;
+    max-width: 1000px;
+  
+    /* flexbox */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  a:hover {
+    color: blue;
+  } 
+
+  .card {
+    padding: 50px;
+    margin: 45px;
+    text-align: center;
+    border-color: black;
+    border-radius: 50px;
+    border-width: 5px;
 }
 
-.plants a {
-  color: #333;
+.card img {
+    max-width: 50%;
+    width: 12.5rem;
+    height: auto;
+    margin-bottom: .938em;
+    text-align:center;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+.user {
+  float: left;
+}
+
+.card-basket {
+  float: left;
+}
+
+.img {
+  background-color: transparent;
+  text-align: center;
+}
+
+a {
   text-decoration: none;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-  display: block;
-  width: 100%;
-}
-
-.plants a:hover {
-  color: #2c3a41;
-  background-color: #e6e6e6;
-}
-
-.plants a:active {
-  background-color: #525252;
-  color: #fafafa;
-}
-
-.plants .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+  color: black;
 }

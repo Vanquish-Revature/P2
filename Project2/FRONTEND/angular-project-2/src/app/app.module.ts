@@ -11,7 +11,9 @@ import { PlantDetailComponent } from './component/plant-detail/plant-detail.comp
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MessagesComponent } from './component/messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
 
 
 @NgModule({
@@ -22,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     PlantComponent,
     PlantDetailComponent,
     DashboardComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -10,32 +10,32 @@
       <strong style="font-size: 30px;">Rainforest</strong>
     </div>
     <button class="user">
-      <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      <a class = "userpic" routerLink = "/userProfile">
+        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      </a>
     </button>
     <button class="cart">
-      <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+      <a class="img" routerLink="/cart">
+        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+      </a>
   </button>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <ng-container *ngFor="let plant of plants">
-    <div class="card col-md-3">
-      <button class="card-basket">
-        <img src="assets/icons/basket2.png" alt="cart" style="height:30px; width: 30px;">
-      </button>
-      <!-- <img src="{{item.image}}" alt=""> -->
-      <img src="assets/images/cactus.jpg" alt="cactus">
-      <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{plant.name}}</h5>
-      <p><strong>Price:</strong> ${{plant.price}}</p>
-    </div>
-  </ng-container>
+<body>
+  <div class="main">
+    <h1>WELCOME TO RAINFOREST!</h1>
+    <p>The home for your indoor plant fix!</p>  
+    <p> We carry a variety of indoor plant species guaranteed to bring life to your home space.</p>
+    <p>Click below to view all our plants.</p>
+    <p> Please create or log in with an account to checkout! Thank you for choosing Rainforest!</p>
+    <button type="button" class="btn">  
+      <a routerLink="/plants">PLANTS</a>
+    </button>  
+    <button type = "button" class ="btn">
+      <a routerLink="/login">LOGIN</a>
+    </button>
+    <button type = "button" class ="btn">
+      <a routerLink="/register">REGISTER</a>
+    </button>
   </div>
-<!-- <h2>Our Plants</h2>
-<div class="plants-menu">
-  <a *ngFor="let plant of plants"
-    routerLink="/detail/{{plant.id}}">
-    {{plant.name}}
-  </a> -->
-<!-- </div> -->
-</div>
+</body>

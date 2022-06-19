@@ -21,3 +21,52 @@ label {
     color: #ccc;
     cursor: auto;
   }
+ 
+  .plant_image
+  {
+    max-width: 60%;
+    height:auto;
+    width:60%;
+    align-self: center;
+  }
+  .plant_description
+  {
+    font-size: 25px;
+  }
+  .cost
+  {
+    position: absolute;
+    top:20.625em;
+    right: 66.2em;
+
+  }
+  .plant_amount
+  {
+    position:absolute;
+    top:20.625em;
+    right: 25em;
+
+  }
+  .submit_button
+  {
+    position: absolute;
+    top:24.375em;
+    right: 25em;
+  }
+  body
+  {
+    overflow: hidden;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+   }
+   .card {
+    padding: 3.125em;
+    margin: 2.8125em;
+    text-align: center;
+    border-color: black;
+    left: 43.75em;
+    border-radius: 50px;
+    border-width: 5px;
+}

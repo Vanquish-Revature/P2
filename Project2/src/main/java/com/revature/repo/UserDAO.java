@@ -2,10 +2,9 @@ package com.revature.repo;
 
 import java.util.List;
 
-import javax.persistence.Query;
 
+import org.hibernate.Transaction;
 import org.hibernate.Session;
-
 import com.revature.models.User;
 import com.revature.utilities.HibernateUtil;
 
@@ -15,7 +14,7 @@ public class UserDAO {
 		Session ses = HibernateUtil.getSession();
 		ses.save(user);
 		HibernateUtil.closeSession();
-	}
+	} 
 	
 	public User login(String username, String password) {
 		Session ses = HibernateUtil.getSession();
@@ -43,22 +42,27 @@ public class UserDAO {
 		}
 	}
 	
-	public void updatePassword(User user, String password) {
+	public void updateUser(User user, String password, String username) {
 		Session ses = HibernateUtil.getSession();
+		Transaction tran = ses.beginTransaction();
+		boolean occured = false;
 		try {
-			user.setPassword(password);
-			ses.merge(user);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		HibernateUtil.closeSession();
-	}
-	
-	public void updateUsername(User user, String username) {
-		Session ses = HibernateUtil.getSession();
-		try {
-			user.setUsername(username);
-			ses.merge(user);
+			if(password.equals(null) || password.equals("") || password == "") {
+				
+			} else {
+				user.setPassword(password);
+				occured = true;
+			}
+			if(username.equals(null) || username.equals("") || username == "") {
+				
+			} else {
+				user.setUsername(password);
+				occured = true;
+			}
+			if(occured == true) {
+				ses.merge(user);
+				tran.commit();
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -74,9 +78,9 @@ public class UserDAO {
 		return userList;
 	}
 	
-	public User getUserById(int id) {
+	public User getUserById(int user_Id) {
 		Session ses = HibernateUtil.getSession();
-		User user = ses.get(User.class, id);
+		User user = ses.get(User.class, user_Id);
 		HibernateUtil.closeSession();
 		return user;
 	}

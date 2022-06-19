@@ -8,7 +8,6 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
 	<groupId>com.revature</groupId>
 	<artifactId>Project2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -26,6 +25,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<<<<<<< HEAD
 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -33,6 +33,8 @@
 			<optional>true</optional>
 		</dependency>
 		
+=======
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
