@@ -23,11 +23,8 @@ public class UserService {
 	public static void login(String username, String password) throws SQLException{
 		aDAO.login(username, password);
 	}
-	public static void updatePassword(User user, String password) throws SQLException{
-		aDAO.updatePassword(user, password);
-	}
-	public static void updateUsername(User user, String password) throws SQLException{
-		aDAO.updateUsername(user, password);
+	public static void updateUser(User user, String password, String username) throws SQLException{
+		aDAO.updateUser(user, password, username);
 	}
 
 }

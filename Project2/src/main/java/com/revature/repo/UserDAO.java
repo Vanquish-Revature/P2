@@ -42,26 +42,27 @@ public class UserDAO {
 		}
 	}
 	
-	public void updatePassword(User user, String password) {
+	public void updateUser(User user, String password, String username) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tran = ses.beginTransaction();
+		boolean occured = false;
 		try {
-			user.setPassword(password);
-			ses.merge(user);
-			tran.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		HibernateUtil.closeSession();
-	}
-	
-	public void updateUsername(User user, String username) {
-		Session ses = HibernateUtil.getSession();
-		Transaction tran = ses.beginTransaction();
-		try {
-			user.setUsername(username);
-			ses.merge(user);
-			tran.commit();
+			if(password.equals(null) || password.equals("") || password == "") {
+				
+			} else {
+				user.setPassword(password);
+				occured = true;
+			}
+			if(username.equals(null) || username.equals("") || username == "") {
+				
+			} else {
+				user.setUsername(password);
+				occured = true;
+			}
+			if(occured == true) {
+				ses.merge(user);
+				tran.commit();
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

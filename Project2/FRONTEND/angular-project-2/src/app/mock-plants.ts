@@ -1,6 +1,8 @@
 import { Plant } from 'src/app/plant';
 
 export const Plants: Plant[] = [
+
+
   { id: 12, name: 'Monstera', description: " Monstera are species of evergreen tropical vines and shrubs that are native to Central America. They are famous for their natural leaf-holes, which has led to the rise of their nickname, Swiss Cheese Plant.",
    price: '14.99', image: './assets/images/monstera.jpg.webp'},
   { id: 13, name: 'Maranta', description: "Maranta is a genus of flowering plants in the family Marantaceae, native to tropical Central and South America and the West Indies. Maranta was named for Bartolomeo Maranta, an Italian physician and botanist of the sixteenth century ",
@@ -13,4 +15,5 @@ export const Plants: Plant[] = [
     price: '6.99', image: './assets/images/succulents.jpeg'},
   { id: 17, name: 'Pothos',description: "Epipremnum aureum is a species in the arum family Araceae, native to Mo orea in the Society Islands of French Polynesia",
     price: '9.99', image: './assets/images/pothos-plant.jpg'}
+
 ];
