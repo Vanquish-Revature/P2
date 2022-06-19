@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+<<<<<<< HEAD:Project_2/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.urischeme.prefs
+processedSchemes=,eclipse+mpc
+=======
+processedSchemes=,eclipse+mpc,eclipse+command
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea:Project2/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.urischeme.prefs

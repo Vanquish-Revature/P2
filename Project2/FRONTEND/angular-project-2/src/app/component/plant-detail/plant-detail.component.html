@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div *ngIf="plant">
 
     <h2>{{plant.name | uppercase}} Details</h2>
@@ -8,3 +9,49 @@
     </div>
     <button type="button" (click)="goBack()">go back</button>
   </div>
+=======
+<link rel="stylesheet" href="plant-detail.component.css">
+<nav>
+  <div class="navbar navbar-light bg-light shadow-sm">
+    <div class="navbar-brand align-item-center d-flex">
+      <button type="button">
+        <a routerLink="/dashboard">
+          <strong style="font-size: 30px;">Rainforest</strong>
+        </a>
+      </button>
+    </div>
+    <button class="user">
+      <a class = "userpic" routerLink = "/userProfile">
+        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      </a>
+    </button>
+    <a class="img" routerLink="/cart">
+      <button class="cart">
+        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+    </button>
+    </a>
+  </div>
+</nav>
+<body>
+  <div *ngIf="plant">
+    <div class="card col-md-3">
+        <label for="plant-name">Plant name:{{plant.name}} </label>
+        <img class = "plant_image" src = {{plant.image}} alt = "image"> 
+        <p class = "plant_description"> {{plant.description}}</p>
+        <label for = "plant-price"> Price: ${{plant.price}}</label>
+        <form>
+            <label for="quantity"> Quantity:</label>
+            <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10">
+            <br>
+            <br>
+            <input type = "submit">
+        </form>
+        <button type="button">
+          <a routerLink="/plants">
+            Go Back
+          </a>
+        </button>
+    </div>     
+  </div>  
+</body>
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea

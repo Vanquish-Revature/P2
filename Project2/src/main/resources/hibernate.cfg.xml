@@ -9,7 +9,11 @@
 
      <!-- JDBC -->
         <property name="hibernate.connection.username">postgres</property>
+<<<<<<< HEAD
         <property name="hibernate.connection.password">password</property>
+=======
+        <property name="hibernate.connection.password">password2</property>
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
         <property name="hibernate.connection.url">jdbc:postgresql://vanquishp2.ceboc7nfkw4e.us-east-1.rds.amazonaws.com:5432/postgres?currentSchema=p2schema</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <!-- Hibernate Properties -->
@@ -19,13 +23,22 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <!-- DDL -->
+<<<<<<< HEAD
         <property name="hibernate.hbm2ddl.auto">create</property>
+=======
+        <property name="hibernate.hbm2ddl.auto">update</property>
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
         <!-- Anyone remember what setting our hbm2ddl.auto to create will do? -->
 		<!-- It will wipe all tables and data, and recreate it -->
 
         <!-- We HAVE TO map our classes here in order for them to get picked up by Hibernate-->
+<<<<<<< HEAD
         <mapping class="com.revature.models.Director"/>
         <mapping class="com.revature.models.Movie"/>
+=======
+        <mapping class="com.revature.models.User"/>
+        <mapping class="com.revature.models.Product"/>
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
         
         
 

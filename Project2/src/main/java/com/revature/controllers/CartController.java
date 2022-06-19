@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -119,4 +120,8 @@ public class CartController {
 	
 	
 	
+=======
+public class CartController {
+
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
 }

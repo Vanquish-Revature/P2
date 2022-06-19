@@ -2,6 +2,10 @@ package com.revature.repo;
 
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import com.revature.models.User;
@@ -41,6 +45,7 @@ public class UserDAO {
 		}
 	}
 	
+<<<<<<< HEAD
 	public void updatePassword(User user, String password) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tran = ses.beginTransaction();
@@ -61,6 +66,29 @@ public class UserDAO {
 			user.setUsername(username);
 			ses.merge(user);
 			tran.commit();
+=======
+	public void updateUser(User user, String password, String username) {
+		Session ses = HibernateUtil.getSession();
+		Transaction tran = ses.beginTransaction();
+		boolean occured = false;
+		try {
+			if(password.equals(null) || password.equals("") || password == "") {
+				
+			} else {
+				user.setPassword(password);
+				occured = true;
+			}
+			if(username.equals(null) || username.equals("") || username == "") {
+				
+			} else {
+				user.setUsername(password);
+				occured = true;
+			}
+			if(occured == true) {
+				ses.merge(user);
+				tran.commit();
+			}
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

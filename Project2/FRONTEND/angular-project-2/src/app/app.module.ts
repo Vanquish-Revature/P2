@@ -11,7 +11,13 @@ import { PlantDetailComponent } from './component/plant-detail/plant-detail.comp
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MessagesComponent } from './component/messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 
+=======
+import { UserProfileComponent } from './component/user-profile/user-profile.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
 
 
 @NgModule({
@@ -22,7 +28,14 @@ import { HttpClientModule } from '@angular/common/http';
     PlantComponent,
     PlantDetailComponent,
     DashboardComponent,
+<<<<<<< HEAD
     MessagesComponent
+=======
+    MessagesComponent,
+    UserProfileComponent,
+    LoginComponent,
+    RegisterComponent
+>>>>>>> 4affc403d369af37428f90018c824dabfa5078ea
   ],
   imports: [
     BrowserModule,
