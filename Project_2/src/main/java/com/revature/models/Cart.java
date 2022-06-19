@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "Cart_Item")
-public class CartItem {
+public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

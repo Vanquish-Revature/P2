@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.models.CartItem;
+import com.revature.models.Cart;
 import com.revature.models.User;
 import com.revature.services.CartService;
 import com.revature.utilities.JsonResponse;
@@ -28,13 +28,13 @@ public class CartController {
 	CartService cartService;
 	 
 	@RequestMapping(value="/addProduct",method=RequestMethod.POST)
-    public @ResponseBody JsonResponse addProductToCart(@RequestBody CartItem cartItem)
+    public @ResponseBody JsonResponse addProductToCart(@RequestBody Cart cartItem)
 	{
 		JsonResponse respone = new JsonResponse();
 		try
 		{
 			logger.info("Inside '/addProduct' request");
-			CartItem addedCart = cartService.addProductToCart(cartItem);
+			Cart addedCart = cartService.addProductToCart(cartItem);
 			respone.setStatus("Success");
 			respone.setResult(addedCart);
 		} catch (Exception e) {
@@ -47,14 +47,14 @@ public class CartController {
 	
 	
 	@RequestMapping(value="/updateProduct",method=RequestMethod.POST)
-    public @ResponseBody JsonResponse updateProductToCart(@RequestBody CartItem cartItem)
+    public @ResponseBody JsonResponse updateProductToCart(@RequestBody Cart cartItem)
 	{
 		JsonResponse respone = new JsonResponse();
 		try
 		{
 			int cartItem_ID = cartItem.getCartitem_ID();
 			
-			CartItem existingCartItem = cartService.getCartItem(cartItem_ID);
+			Cart existingCartItem = cartService.getCartItem(cartItem_ID);
 			
 			if(existingCartItem !=null)
 			{
@@ -71,7 +71,7 @@ public class CartController {
 			
 			
 			logger.info("Inside '/updateProduct' request");
-			CartItem addedCart = cartService.updateProductInCart(existingCartItem);
+			Cart addedCart = cartService.updateProductInCart(existingCartItem);
 			respone.setStatus("Success");
 			respone.setResult(addedCart);
 		} catch (Exception e) {
@@ -82,7 +82,7 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="/deleteProduct",method=RequestMethod.POST)
-    public @ResponseBody JsonResponse deleteProductToCart(@RequestBody CartItem cartItem)
+    public @ResponseBody JsonResponse deleteProductToCart(@RequestBody Cart cartItem)
 	{
 		
 		JsonResponse respone = new JsonResponse();
@@ -106,7 +106,7 @@ public class CartController {
 		logger.info("Inside '/cartItems' request");
 		JsonResponse respone = new JsonResponse();
 		
-		List<CartItem> cartItems = cartService.getProductsInCart(user);
+		List<Cart> cartItems = cartService.getProductsInCart(user);
 		
 		respone.setStatus("Success");
 		respone.setResult(cartItems);
