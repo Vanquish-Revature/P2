@@ -13,7 +13,7 @@
 	<artifactId>Project2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Project2</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -26,7 +26,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

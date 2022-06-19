@@ -12,10 +12,10 @@ import com.revature.repo.ProductDAO;
 public class Project2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Project2Application.class, args);
+	//	SpringApplication.run(Project2Application.class, args);
 		
-		System.out.println("Hello There");
-	}
+	//	System.out.println("Hello There");
+	//}
 
 			
 
@@ -41,4 +41,5 @@ public class Project2Application {
 //	 }
 	
 	}
+}
 			
