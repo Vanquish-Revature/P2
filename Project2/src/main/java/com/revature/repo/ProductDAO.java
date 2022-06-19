@@ -21,7 +21,7 @@ public class ProductDAO {
 //We are going to use HQL for this ones
 	public List<Product> getAllProduct(){
 		Session ses = HibernateUtil.getSession(); //This opens the session
-		List<Product> productList = ses.createQuery("FROM Product").list(); //This is HQL which will get all items from the Movie Table
+		List<Product> productList = ses.createQuery("FROM product").list(); //This is HQL which will get all items from the Movie Table
 		HibernateUtil.closeSession(); //This closes the session
 		return productList; //This returns the list
 }
@@ -36,7 +36,7 @@ public class ProductDAO {
 	//will this be in cartDAO??? idk ---vi
 	public List<Product> getProductByUserId(int user_ID){
 		Session ses = HibernateUtil.getSession(); //opens the session
-		Query q = ses.createQuery("FROM Product p WHERE p.product.id = ?0"); 
+		Query q = ses.createQuery("FROM product p WHERE p.product.id = ?0"); 
 		//The 0 is what we are targeting to change with our setParameter
 		q.setParameter(0, user_ID); //This sets the ? to the id that we sent to this method
 		List<Product> productList = q.getResultList(); //This will create a List that will hold the results of our query
