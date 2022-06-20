@@ -1,5 +1,7 @@
 package com.revature.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.models.Product;
 import com.revature.models.User;
 import com.revature.repo.UserDAO;
 
@@ -19,19 +25,27 @@ import com.revature.repo.UserDAO;
 @CrossOrigin
 public class UserController {
 	// Login, register, update password, update username, get all, get by id
-<<<<<<< HEAD
-	UserDAO ud;
+
+	
 //	@Autowired
 //	public UserController(UserDAO dao) {
 //		this.ud = dao;
 //	}	
-=======
+
 	public static UserDAO ud;
+	
 	@Autowired
 	public UserController(UserDAO dao) {
 		this.ud = dao;
 	}	
->>>>>>> e04c8552e7db5af05f6ea6bf6e1f35177a4429de
+
+	@RequestMapping(method=RequestMethod.GET) 
+	public List<User> getAllUsers(){
+		return ud.getAllUsers(); 
+	}
+	
+	
+	
 	@GetMapping("/login")
 	public ResponseEntity<User> login(@PathVariable("user")User user){
 		if(user == ud.getUserById(user.getUser_ID())) {
@@ -40,7 +54,7 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 		}
 	}
-	@GetMapping("/register")
+	@PostMapping("/register")
 	public ResponseEntity<User> register(@PathVariable("user")User user){
 		try {
 			ud.register(user);
@@ -49,7 +63,7 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 		}
 	}
-	@GetMapping("/updateUser")
+	@PutMapping("/updateUser")
 	public ResponseEntity<User> updateUser(@PathVariable("user")User user, String password, String username){ 
 			try {
 				ud.updateUser(user, password, username);
