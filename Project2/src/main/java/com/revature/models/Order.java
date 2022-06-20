@@ -28,7 +28,7 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user_ID;
 	
-	@Column(name = "product_name")
+	@Column(nullable = false, unique = true, name = "plant_name")
 	private String product_name;
 	
 	@Column(name = "price")

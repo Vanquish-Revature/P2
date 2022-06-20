@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,11 +17,16 @@ import com.revature.utilities.HibernateUtil;
 public class OrderDAO {
 	
 	
-	public int submitOrder(Order orders) {
-		Session ses = HibernateUtil.getSession();
+	public Order submitOrder(Order orders) {
+		try(Session ses = HibernateUtil.getSession()){
 		ses.save(orders);
 		HibernateUtil.closeSession();
-		return 0;
+		return orders;
+	}
+		catch(HibernateException e) {
+			System.out.println("There was an error submitting your order!");
+			return null;
+		}
 	}
 	
 	public List<Order> getAllOrders() {

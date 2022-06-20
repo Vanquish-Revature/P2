@@ -13,15 +13,15 @@ public class Project2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Project2Application.class, args);
-		
+//		
 //		System.out.println("Hello There");
 //		
 //		OrderDAO order = new OrderDAO();
 //		
-//		Order o1 = new Order(1, null, null, "Rattlesnake Plant", 10.00, 10);
+//		Order o1 = new Order(1, null, null, "test", 10.00, 10);
 //	
 //		order.submitOrder(o1);
-		
+//		
 //		List<Order> allOrder = order.getAllOrders(); {
 //			
 //			for(Order o : allOrder) 

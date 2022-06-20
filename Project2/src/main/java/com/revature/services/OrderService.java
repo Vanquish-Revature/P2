@@ -58,7 +58,7 @@ public class OrderService {
 		return odao.getAllOrders();
 	}
 	
-	public int submitOrder(Order orders) {
+	public Order submitOrder(Order orders) {
 		return odao.submitOrder(orders);
 	}
 

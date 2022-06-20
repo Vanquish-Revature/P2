@@ -31,7 +31,7 @@ import com.revature.services.OrderService;
 @CrossOrigin
 public class OrderController {
 	ArrayList<Product> cart;
-
+	
 	OrderService oService = new OrderService();
 
 	
@@ -56,16 +56,17 @@ public class OrderController {
 	}
 	
 	
-	@PostMapping
-	public ResponseEntity<String> submitOrder(Order orders) {
-		if(oService.submitOrder(null)==1) {
-			return ResponseEntity.status(HttpStatus.OK).body("Checkout Successful!");
-		} else {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Checkout Unsuccessful!");
+	@PostMapping("/checkout")
+	public ResponseEntity<Order> submitOrder(@PathVariable("order")Order orders) {
+		try {
+		oService.submitOrder(orders);
+		return ResponseEntity.ok(orders);
 		}
+		catch(Exception e) {
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(orders);
 	}
 	
-	
+	}
 }
 
 
