@@ -1,8 +1,10 @@
 package com.revature.repo;
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -11,12 +13,25 @@ import com.revature.utilities.HibernateUtil;
 
 
 public class ProductDAO {
-    public void insertProduct(Product product) {
-	Session ses = HibernateUtil.getSession(); //This will open our session object to establish a connection to our database
-	ses.save(product);
-	HibernateUtil.closeSession(); //This closes the session which will help prevent a memory leak issue
-} 
-
+	
+//	@PersistenceContext
+//    public static void insertProduct(Product product) {
+//	Session ses = HibernateUtil.getSession(); //This will open our session object to establish a connection to our database
+//	ses.save(product);
+//	HibernateUtil.closeSession(); //This closes the session which will help prevent a memory leak issue
+//} 
+	
+	@PersistenceContext
+	public static void insertProduct(Product product) {
+		try(Session ses = HibernateUtil.getSession()){
+			ses.save(product);
+			HibernateUtil.closeSession();
+		} catch(HibernateException e) {
+		    System.out.println(e);
+		    e.printStackTrace();
+		}
+	}
+	
 
 //We are going to use HQL for this ones
 	public List<Product> getAllProduct(){
@@ -47,13 +62,15 @@ public class ProductDAO {
 	public List<Product> getProductByName(String product_name){
 		
 		Session ses = HibernateUtil.getSession(); //opens the session
-		Query q = ses.createQuery("FROM Movie m WHERE m.director.id = ?0"); 
+		Query q = ses.createQuery("FROM Product m WHERE m.product.id = ?0"); 
 		//The 0 is what we are targeting to change with our setParameter
 		q.setParameter(0, product_name); //This sets the ? to the id that we went to this method
 		List<Product> productList = q.getResultList(); //This will create a List that will hold the results of our query
 		HibernateUtil.closeSession(); //closes the session
 		return productList; //returns our list
 	}
+	
+
 	
 	//We will use session method to update
 		public void updateProductWithSessionMethod(Product product) {
@@ -65,7 +82,7 @@ public class ProductDAO {
 
 		}
 		//We will use HQL to update
-		public void updateMovieWithHQL(Product product) {
+		public void updateProductWithHQL(Product product) {
 			Session ses = HibernateUtil.getSession(); //opens the session
 			Transaction tran = ses.beginTransaction(); //ALL and I do mean ALL update and delete methods MUST happen within a transaction
 			Query q = ses.createQuery("UPDATE Product SET product_name = '" + product.getProduct_name() + "' WHERE id = " + product.getProduct_ID());
