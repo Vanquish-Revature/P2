@@ -32,13 +32,13 @@ import com.revature.services.OrderService;
 public class OrderController {
 	ArrayList<Product> cart;
 
-	private OrderService oService;
+	OrderService oService = new OrderService();
 
 	
-	@Autowired
-	public OrderController(OrderService os) {
-		this.oService = os;
-	}
+//	@Autowired
+//	public OrderController(OrderService os) {
+//		this.oService = os;
+//	}
 	
 	@GetMapping
 	public List<Order> getAllOrders(){
@@ -46,7 +46,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Order> getbyId(@PathVariable("id") int id){
+	public ResponseEntity<Order> getOrderById(@PathVariable("id") int id){
 		Order o = oService.getOrderById(id);
 		if(o == null) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(o);
@@ -55,15 +55,6 @@ public class OrderController {
 		}
 	}
 	
-//	@PutMapping
-//	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
-//		if(p.getProduct_name()==null) {
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
-//		} else {
-//			cart = oService.addToCart(p);
-//			return ResponseEntity.status(202).body(cart);
-//		}
-//	}
 	
 	@PostMapping
 	public ResponseEntity<String> submitOrder(Order orders) {
@@ -76,3 +67,16 @@ public class OrderController {
 	
 	
 }
+
+
+
+
+//@PutMapping
+//public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
+//	if(p.getProduct_name()==null) {
+//		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
+//	} else {
+//		cart = oService.addToCart(p);
+//		return ResponseEntity.status(202).body(cart);
+//	}
+//}

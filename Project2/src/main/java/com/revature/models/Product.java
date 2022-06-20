@@ -15,8 +15,8 @@ public class Product {
 	private int product_ID;
 	@Column(unique = true, nullable = false)
 	private String product_name;
-	@Column(nullable = false)
-	private String description;
+//	@Column(nullable = false)
+//	private String description;
 	@Column(nullable = false)
 	private double price;
 	@Column(nullable = false)
@@ -34,12 +34,12 @@ public class Product {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+//	public String getDescription() {
+//		return description;
+//	}
+//	public void setDescription(String description) {
+//		this.description = description;
+//	}
 	public double getPrice() {
 		return price;
 	}
@@ -60,13 +60,13 @@ public class Product {
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;
-		this.description = description;
+//		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
 	}
 	@Override
 	public String toString() {
-		return "Product [product_ID=" + product_ID + ", product_name=" + product_name + ", description=" + description
+		return "Product [product_ID=" + product_ID + ", product_name=" + product_name 
 				+ ", price=" + price + ", quantity=" + quantity + "]";
 	} 
 	
