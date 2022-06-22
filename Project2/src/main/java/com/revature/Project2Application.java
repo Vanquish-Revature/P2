@@ -3,6 +3,9 @@ package com.revature;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.revature.models.User;
+import com.revature.repo.UserDAO;
+
 @SpringBootApplication
 public class Project2Application {
 
@@ -10,9 +13,19 @@ public class Project2Application {
 		SpringApplication.run(Project2Application.class, args);
 		
 		System.out.println("Hello There");
+
+
 	}
 
-			
+//	UserDAO user = new UserDAO();
+//	
+//	User u1 = new User(1,"test","test","Cody","Jenkins");
+//	User u2 = new User(2,"admin","test","Kevin","Winter");
+//	User u3 = new User(3,"guest","test","Robert","Hannah");
+//	
+//	user.register(u1);
+//	user.register(u2);
+//	user.register(u3);		
 
 //ProductDAO plant = new ProductDAO();
 	
