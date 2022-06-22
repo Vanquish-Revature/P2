@@ -3,6 +3,7 @@ import { Plant } from 'src/app/plant';
 import { PlantService } from 'src/app/service/plant-service/plant.service'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ApiService } from 'src/app/service/api/api.service';
 
 @Component({
   selector: 'app-plant-detail',
@@ -12,26 +13,31 @@ import { Location } from '@angular/common';
 export class PlantDetailComponent implements OnInit {
 
   plant: Plant | undefined;
+  product_id: any;
 
+ 
   constructor(
     private route: ActivatedRoute,
     private plantService: PlantService,
-    private location: Location
+    private location: Location,
+    private api: ApiService
+
   ) { }
 
   ngOnInit(): void {
-    this.getPlant();
+    this.api.getPlantDetail(this.product_id)
+    .subscribe((res:any)=>{
+      this.plant;
+    })
   }
 
-  getPlant(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.plantService.getPlant(id)
-      .subscribe(plant => this.plant = plant);
-  }
+
 
   goBack(): void {
     this.location.back();
   }
 
 }
+
+
 

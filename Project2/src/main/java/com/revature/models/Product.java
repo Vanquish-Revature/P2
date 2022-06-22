@@ -13,7 +13,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Product_ID")
 	private int product_ID;
-	@Column(unique = true, nullable = false)
+	@Column(name = "plant_name",unique = true, nullable = false)
 	private String product_name;
 //	@Column(nullable = false)
 //	private String description;
@@ -56,7 +56,7 @@ public class Product {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(int product_ID, String product_name, String description, double price, int quantity) {
+	public Product(int product_ID, String product_name, double price, int quantity) {
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;

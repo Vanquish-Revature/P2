@@ -45,39 +45,30 @@ public class OrderController {
 		return oService.getAllOrders();
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Order> getOrderById(@PathVariable("id") int id){
-		Order o = oService.getOrderById(id);
-		if(o == null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(o);
-		} else {
-			return ResponseEntity.ok(o);
-		}
-	}
-	
 	
 	@PostMapping("/checkout")
 	public ResponseEntity<Order> submitOrder(@PathVariable("order")Order orders) {
 		try {
 		oService.submitOrder(orders);
-		return ResponseEntity.ok(orders);
+			return ResponseEntity.ok(orders);
 		}
 		catch(Exception e) {
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(orders);
+	return ResponseEntity.status(HttpStatus.NO_CONTENT).body(orders);
 	}
 	
-	}
 }
 
 
 
+	@PutMapping
+	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
+		if(p.getProduct_name()==null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
+		} else {
+			cart = oService.addToCart(p);
+			return ResponseEntity.status(202).body(cart);
+		}
+	}
 
-//@PutMapping
-//public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
-//	if(p.getProduct_name()==null) {
-//		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
-//	} else {
-//		cart = oService.addToCart(p);
-//		return ResponseEntity.status(202).body(cart);
-//	}
-//}
+}
+

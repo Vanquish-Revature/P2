@@ -22,22 +22,21 @@
 </nav>
 <div class="container">
   <div class="row">
-    <ng-container *ngFor="let plant of plants">
+    <ng-container *ngFor="let plant of plantList">
       <div class="card col-md-3">
-      <button class="card-basket" >
-        <!-- (click)=addtocart(item) -->
+      <button class="card-basket"  (click)=addtocart(plant)>
         <img src="assets/icons/basket2.png" alt="cart" style="height:30px; width: 30px;">
         <!--add to cart-->
       </button>
       <a class="img" routerLink="/plants">
         <img src={{plant.image}} alt="cactus">
+        </a>
       <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
-      <a routerLink="/detail/{{plant.id}}">
-        {{plant.name}}
+      <a routerLink="/detail/{{plant.product_id}}">
+        {{plant.product_name}}
       </a>
       </h5>
       <p><strong>Price:</strong> ${{plant.price}}</p>
-      </a>
     </div>
   </ng-container>
   </div>

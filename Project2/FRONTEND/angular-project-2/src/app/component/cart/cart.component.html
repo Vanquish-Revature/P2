@@ -15,6 +15,49 @@
     </button>
     </div>
   </nav>
+  <ng-container *ngIf="plants.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let plant of plants; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{plant.product_name}}</td>
+                            <td><img style="width: 120px;" src="{{plants.image}}" alt=""></td>
+                            <td style="width: 25%;">{{plants.description}}</td>
+                            <th style="width: 12%;">{{plant.price}}</th>
+                            <td style="width: 12%;">{{plant.quantity}}</td>
+                            <td style="width: 12%;">{{plant.total}}</td>
+                            <!-- <td>
+                                <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr> -->
+                        <tr>
+                            <td colspan="4"></td>
+                            <!-- <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td> -->
+                            <td><button routerLink="/plants" class="btn btn-primary">Shop More</button></td>
+                            <td><button routerLink="/checkout" class="btn btn-success">Checkout</button></td>
+                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container> 
 <ng-container *ngIf="plants.length ==0">
     <div class="container">
         <div class="card">

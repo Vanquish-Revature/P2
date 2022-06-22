@@ -28,53 +28,52 @@ public class OrderService {
 //		this.o = order;
 //	}
 
-//	public ArrayList<Product> addToCart(Product p) {
-//		ProductDAO pdao = new ProductDAO();
-//		if(pdao.getProductByName(p.getProduct_name())!=null) {
-//			cartList.add(p);
-//			System.out.println(cartList);
-//			return cartList;
-//		} else {
-//			System.out.println("Item not found!");
-//			return cartList;
-//		}
-//		
-//	}
-//	
-//	public ArrayList<Product> removeFromCart(Product p){
-//		if(p.getProduct_name()!=null && cartList!=null) {
-//			for(Product pro : cartList) {
-//				if(p.getProduct_name() == pro.getProduct_name()) {
-//					cartList.remove(pro);
-//				}
-//			}
-//			return cartList;
-//		} else {
-//			return cartList;
-//		}
-//	}
+	public ArrayList<Product> addToCart(Product p) {
+	ProductDAO pdao = new ProductDAO();
+		if(pdao.getProductByName(p.getProduct_name())!=null) {
+			cartList.add(p);
+			System.out.println(cartList);
+			return cartList;
+		} else {
+			System.out.println("Item not found!");
+			return cartList;
+		}
+		
+	}
+	
+	public ArrayList<Product> removeFromCart(Product p){
+		if(p.getProduct_name()!=null && cartList!=null) {
+			for(Product pro : cartList) {
+				if(p.getProduct_name() == pro.getProduct_name()) {
+					cartList.remove(pro);
+				}
+			}
+			return cartList;
+		} else {
+			return cartList;
+		}
+	}
 
 	public List<Order> getAllOrders() {
 		return odao.getAllOrders();
 	}
 	
-	public Order submitOrder(Order orders) {
+	public int submitOrder(Order orders) {
 		return odao.submitOrder(orders);
 	}
 
-//	ArrayList<Integer> product_ID = new ArrayList<>();
-//	public int submitOrder() {
-//		o.setUser_ID(UserController.ud.getUserById());
-//		for(Product product : cartList) {
-//			product_ID.add(product.getProduct_ID());
-//		}
-//		o.setProduct_ID(product_ID);
-//		return odao.submitOrder(o);
-//	}
-
-	public Order getOrderById(int id) {
-		return odao.getOrderById(id);
+	ArrayList<Integer> product_id = new ArrayList<>();
+	public int submitOrder() {
+		o.setUser_ID(UserController.ud.getUserById(0));
+		for(Product product : cartList) {
+			product_id.add(product.getProduct_ID());
+		}
+		o.setProduct_ID(product_id);
+		return odao.submitOrder(o);
 	}
+
 	
+
+
 	
 }

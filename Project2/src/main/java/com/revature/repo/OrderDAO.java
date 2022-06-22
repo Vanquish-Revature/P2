@@ -17,15 +17,15 @@ import com.revature.utilities.HibernateUtil;
 public class OrderDAO {
 	
 	
-	public Order submitOrder(Order orders) {
+	public int submitOrder(Order orders) {
 		try(Session ses = HibernateUtil.getSession()){
 		ses.save(orders);
 		HibernateUtil.closeSession();
-		return orders;
+		return 1;
 	}
 		catch(HibernateException e) {
 			System.out.println("There was an error submitting your order!");
-			return null;
+			return 0;
 		}
 	}
 	
@@ -36,12 +36,14 @@ public class OrderDAO {
 		return orderList;
 	}
 	
-	public Order getOrderById(int id) {
-		Session ses = HibernateUtil.getSession(); 
-		Order order = ses.get(Order.class, id); 
-		HibernateUtil.closeSession();
-		return order; 
-	}
+
+	
+	
+	
+//	add
+//	
+//	remove
+//	
 	
 //	public List<Order> getOrdersByProductId(int id){
 //		Session ses = HibernateUtil.getSession(); 

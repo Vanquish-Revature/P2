@@ -44,14 +44,15 @@ public class ProductController {
 		return pd.getAllProduct(); 
 	}
 	
-	@GetMapping("/productID")
+	@GetMapping("/productID/{product_ID}")
 	public ResponseEntity<Product> getByProductId(@PathVariable("product_ID") int product_ID){
 		Product a = pd.getProductById(product_ID);
 		
 		if(a == null) {
-			return ResponseEntity.ok(a);
-		} else {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(a);
+			
+		} else {
+			return ResponseEntity.ok(a);
 		}
 	}
 	

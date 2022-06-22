@@ -20,7 +20,7 @@ import com.revature.repo.UserDAO;
 public class UserController {
 	// Login, register, update password, update username, get all, get by id
 
-	UserDAO ud;
+	public static UserDAO ud;
 //	@Autowired
 //	public UserController(UserDAO dao) {
 //		this.ud = dao;
