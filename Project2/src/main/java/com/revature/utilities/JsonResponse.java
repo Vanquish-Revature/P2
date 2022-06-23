@@ -1,6 +1,6 @@
 package com.revature.utilities;
 
-public class JsonResponse {
+public class JsonRespons{
 	  private String status = null;
 	    private Object result = null;
 	    public String getStatus() {
@@ -15,4 +15,5 @@ public class JsonResponse {
 	    public void setResult(Object result) {
 	            this.result = result;
 	    }
+
 }
