@@ -19,21 +19,29 @@
     </div>
   </nav>
   <body>
-    <div class="card col-md-3">     
+    <form *ngFor=" let user of collection">
+    <div class="card col-md-3">
             <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
-            <label for = "first_name" class = "fName"> First Name: </label>
-            <p> Test</p>
+            <label for = "username" class = "uName">  Username : {{user.username}} </label>
+            <input type = "text" id = "username" formController = "username" name = "username">
             <br>
-            <label for = "last_name" class = "lName"> Last Name: </label>
-            <p> test</p>
+            <label for = "password" class = "password"> Password: {{user.password}} </label>
+            <input type = "text" id = "password" formController = "password" name = "password">
+            <br>
+            <label for = "firstName" class = "firstName"> First name: {{user.username}} </label>
+            <input type = "text" id = "firstName" formController = "firstname" name = "firstName">
+            <br>
+            <label for = "lastName" class = "lName"> Last name: {{user.lastName}} </label>
+            <input type = "text" id = "lastName" formController = "lastName" name = "lastName">
             <br>
             <!-- <label for = "E-Mail" class = "email"> E-Mail: </label>
             <p> test email</p>
             <br> -->
 
             <button type = "button" class="btn btn-primary">
-                Edit
+                Update Profile
             </button>
             
-    </div>    
+    </div>
+  </form>    
   </body>

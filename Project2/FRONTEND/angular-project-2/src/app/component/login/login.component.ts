@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type' : 'application/json',
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
                 password : this.password};
     let Credentials = {withCredentials:true};
     console.log(this.username);
-    console.log(this.password);            
+    console.log(this.password); 
+          
     console.log(user);
     console.log(Credentials);
 

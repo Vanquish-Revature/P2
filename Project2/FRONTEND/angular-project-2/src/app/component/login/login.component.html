@@ -23,11 +23,11 @@
         <h3> Log-in Portal</h3>
         <form>
             <label for = "username"> Username: </label><br>
-            <input type = "text" id="username" placeholder="username" formController= "username" [(ngModel)] = "username" > 
+            <input type = "text" id="username" placeholder="username" formController= "username" [(ngModel)] = "username" name = "username"> 
             <br>
             <br>
             <label for = "password"> Password: </label><br>
-            <input type = "text" id="password"  placeholder="password" formController= "password" [(ngModel)] = "password"> 
+            <input type = "text" id="password"  placeholder="password" formController= "password" [(ngModel)] = "password" name = "password"> 
             <br>
             <br>
             <button type = "submit" class ="btn" (click) = Loginuser()>

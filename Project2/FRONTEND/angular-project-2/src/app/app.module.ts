@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import {UserServiceService} from 'src/app/service/user-service/user-service.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { RegisterComponent } from './component/register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

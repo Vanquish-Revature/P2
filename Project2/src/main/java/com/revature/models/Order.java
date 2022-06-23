@@ -12,9 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+@Component
 @Entity
 @Table(name = "orders")
-@Component
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

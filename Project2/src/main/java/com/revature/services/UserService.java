@@ -23,6 +23,10 @@ public class UserService {
 		User users = aDAO.getUserById(id);
 		return users;
 	}
+	public static User getUserByUserName(String user_name) { 
+		User users = aDAO.getUserByUsername(user_name);
+		return users;
+	}
 	public static List<User> getAllUsers(){
 		List<User> users = aDAO.getAllUsers();
 		return users;
