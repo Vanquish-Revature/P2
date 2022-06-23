@@ -13,9 +13,10 @@ import { ApiService } from 'src/app/service/api/api.service';
 export class PlantComponent implements OnInit {
   plants: Plant[] = [];
   public plantList : any;
+  public totalItem : number = 0;
  
 
-  constructor(private plantService: PlantService, private cartService : CartService, private api: ApiService) { }
+  constructor(private cartService : CartService, private api: ApiService) { }
 
   ngOnInit(): void {
     this.api.getPlants()
@@ -26,7 +27,13 @@ export class PlantComponent implements OnInit {
     });
     console.log(this.plantList);
   });
+
+  this.cartService.getProducts()
+  .subscribe(res=>{
+    this.totalItem = res.length;
+  })
   }
+
 
   // getPlants(): void {
   //   this.plantService.getPlants()

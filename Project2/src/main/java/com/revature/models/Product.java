@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 @Entity
 @Table(name = "product")
@@ -15,8 +16,11 @@ public class Product {
 	private int product_ID;
 	@Column(name = "plant_name",unique = true, nullable = false)
 	private String product_name;
-//	@Column(nullable = false)
-//	private String description;
+//	@Lob
+//	@Column(columnDefinition="MEDIUMBLOB")
+//	private String image;
+	@Column(nullable = false)
+	private String description;
 	@Column(nullable = false)
 	private double price;
 	@Column(nullable = false)
@@ -34,12 +38,12 @@ public class Product {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-//	public String getDescription() {
-//		return description;
-//	}
-//	public void setDescription(String description) {
-//		this.description = description;
-//	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public double getPrice() {
 		return price;
 	}
@@ -52,21 +56,29 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+//	public String getImage() {
+//		return image;
+//	}
+//	public void setImage(String image) {
+//		this.image = image;
+//	}
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(int product_ID, String product_name, double price, int quantity) {
+	public Product(int product_ID, String product_name, String description, double price, int quantity) {
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;
-//		this.description = description;
+		this.description = description;
+//		this.image = image;
 		this.price = price;
 		this.quantity = quantity;
 	}
 	@Override
 	public String toString() {
-		return "Product [product_ID=" + product_ID + ", product_name=" + product_name 
+		return "Product [product_ID=" + product_ID + ", product_name=" + product_name + ", description=" + description
 				+ ", price=" + price + ", quantity=" + quantity + "]";
 	} 
 	

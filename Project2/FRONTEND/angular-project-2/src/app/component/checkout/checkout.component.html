@@ -1,1 +1,64 @@
-<p>checkout works!</p>
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Order Summary</h1>
+  </div>  
+    <div class="card-body text-center">
+      <!-- <h5 class="card-title">User's first and last name pulled from userid</h5> -->
+      <table class="table table-responsive table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let plant of plants; let i = index">
+            <td style="width: 12%">{{plant.product_name}}</td>
+            <td style="width: 12%">${{plant.price}}</td>
+            <td style="width: 12%">{{plant.quantity}}</td>
+            <td style="width: 12%">{{plant.total}}</td>
+          </tr>
+          <tr>
+            <td colspan="4"></td>
+            <td><button class="btn btn-success">Submit Order</button></td>
+            <td><strong>Grand Total : ${{grandTotal}}</strong></td> 
+            
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+ <!-- <ng-container *ngIf="plant.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <caption>ORDER SUMMARY</caption>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr *ngFor="let plant of plants; let i = index">
+                            <td>{{plant.product_name}}</td>
+                            <th style="width: 12%;">{{plant.price}}</th>
+                            <td style="width: 12%;">{{plant.quantity}}</td>
+                            <td style="width: 12%;">{{plant.total}}</td>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><strong>Grand Total : ${{grandTotal}}</strong></td> 
+                            <td><button class="btn btn-success">Submit Order</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container> -->

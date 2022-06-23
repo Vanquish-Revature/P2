@@ -1,21 +1,4 @@
-<nav>
-    <div class="navbar navbar-light bg-light shadow-sm">
-      <div class="navbar-brand align-item-center d-flex">
-        <a routerLink="/dashboard">
-          <strong style="font-size: 30px;">Rainforest</strong>
-        </a>
-      </div>
-      <button class="user">
-        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
-      </button>
-      <button class="cart">
-        <a class="img" routerLink="/cart">
-        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
-        </a>
-    </button>
-    </div>
-  </nav>
-  <ng-container *ngIf="plants.length !=0">
+<ng-container *ngIf="plants.length !=0">
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
@@ -34,11 +17,11 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let plant of plants; let i = index">
-                            <td>{{i+1}}</td>
+                            <td>{{plant.product_ID}}</td>
                             <td>{{plant.product_name}}</td>
                             <td><img style="width: 120px;" src="{{plants.image}}" alt=""></td>
-                            <td style="width: 25%;">{{plants.description}}</td>
-                            <th style="width: 12%;">{{plant.price}}</th>
+                            <td style="width: 25%;">{{plant.description}}</td>
+                            <td style="width: 12%;">${{plant.price}}</td>
                             <td style="width: 12%;">{{plant.quantity}}</td>
                             <td style="width: 12%;">{{plant.total}}</td>
                             <!-- <td>
