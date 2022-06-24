@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.models.Product;
+
 import com.revature.models.User;
 import com.revature.repo.UserDAO;
 import com.revature.services.UserService;
@@ -46,13 +46,43 @@ public class UserController {
 	public List<User> getAllUsers(){
 		return ud.getAllUsers(); 
 	}
+
+	@GetMapping("/userID/{usr_ID}")
+	public ResponseEntity<User> getUserByUserId(@PathVariable("usr_ID") int usr_ID)
+	{
+		User u = us.getUserById(usr_ID);
+		if(u == null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
+			
+		} else {
+			return ResponseEntity.ok(u);
+		}
+	}
 	
-//	@GetMapping("/getFirstName")
-//	public ResponseEntity<User> getFirstNameById(@RequestParam("userID") int user_ID)
-//	{
-//		u = ud.getUserByFirstName(user_ID);
-//	}
-	//for testing purposes
+	@GetMapping("/Username")
+	public ResponseEntity<User> getUserByName(@RequestParam("username") String user_name)
+	{
+//		u = us.getUserByUserName(user_name);
+		if(user_name == null) 
+		{
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
+		}
+		else 
+		{
+			if(us.getUserByUserName(user_name) != null) 
+			{
+				u =us.getUserByUserName(user_name);
+				return ResponseEntity.ok(u);
+				
+			}
+			else 
+			{
+				u = null;
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(u);
+			}
+		}
+	}
+
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody User user) throws SQLException{
 //		if(user.getUsername() == null) 

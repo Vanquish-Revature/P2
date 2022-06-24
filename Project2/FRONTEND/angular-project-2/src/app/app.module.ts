@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+import {UserServiceService} from 'src/app/service/user-service/user-service.service';
 
 
 @NgModule({
@@ -35,7 +36,11 @@ import { RegisterComponent } from './component/register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [UserServiceService],
+  bootstrap: [AppComponent],
+  schemas: 
+  [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }
