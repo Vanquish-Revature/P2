@@ -19,29 +19,31 @@
     </div>
   </nav>
   <body>
-    <form *ngFor=" let user of collection">
-    <div class="card col-md-3">
-            <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
-            <label for = "username" class = "uName">  Username : {{user.username}} </label>
-            <input type = "text" id = "username" formController = "username" name = "username">
-            <br>
-            <label for = "password" class = "password"> Password: {{user.password}} </label>
-            <input type = "text" id = "password" formController = "password" name = "password">
-            <br>
-            <label for = "firstName" class = "firstName"> First name: {{user.username}} </label>
-            <input type = "text" id = "firstName" formController = "firstname" name = "firstName">
-            <br>
-            <label for = "lastName" class = "lName"> Last name: {{user.lastName}} </label>
-            <input type = "text" id = "lastName" formController = "lastName" name = "lastName">
-            <br>
-            <!-- <label for = "E-Mail" class = "email"> E-Mail: </label>
-            <p> test email</p>
-            <br> -->
-
-            <button type = "button" class="btn btn-primary">
-                Update Profile
-            </button>
-            
-    </div>
-  </form>    
+    <!-- <input type = "text" (keyup) = "onNameKeyUp($event)">
+    <button type = "button" class="btn btn-primary" (click)=getUser()>
+      Show Profile
+    </button>
+    {{username}} name is {{username}} -->
+    <div>
+      <form>
+      <div class="card col-md-3"> 
+              <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
+              <label for = "username" class = "uName">  Username : {{profile.username}} </label> 
+               <input type = "text" id = "username" formController = "username"  name = "username"> 
+               <br>
+              <label for = "password" class = "password"> Password: {{profile.password}} </label> 
+               <input type = "text" id = "password" formController = "password" name = "password">
+               <br>
+              <label for = "firstName" class = "firstName"> First name: {{profile.firstname}} </label> 
+               <input type = "text" id = "firstName" formController = "firstname" name = "firstName"> 
+              <br>
+              <label for = "lastName" class = "lName"> Last name: {{profile.lastName}} </label> 
+               <input type = "text" id = "lastName" formController = "lastName" name = "lastName"> 
+               <br>          
+              <button type = "button" class="btn btn-primary">
+                  Update User
+              </button> 
+      </div>
+      </form>
+    </div>    
   </body>

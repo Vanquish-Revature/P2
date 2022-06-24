@@ -26,7 +26,7 @@ import com.revature.services.UserService;
 @Controller
 @ResponseBody
 @RequestMapping(value="/user")
-@CrossOrigin( origins = "http://localhost:4200")
+@CrossOrigin
 public class UserController {
 	// Login, register, update password, update username, get all, get by id
   public static UserDAO ud;
@@ -59,17 +59,27 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/Username/{username}")
-	public ResponseEntity<User> getUserByName(@PathVariable("username") String user_name)
+	@GetMapping("/Username")
+	public ResponseEntity<User> getUserByName(@RequestParam("username") String user_name)
 	{
-		u = us.getUserByUserName(user_name);
+//		u = us.getUserByUserName(user_name);
 		if(user_name == null) 
 		{
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
 		}
 		else 
 		{
-			return ResponseEntity.ok(u);
+			if(us.getUserByUserName(user_name) != null) 
+			{
+				u =us.getUserByUserName(user_name);
+				return ResponseEntity.ok(u);
+				
+			}
+			else 
+			{
+				u = null;
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(u);
+			}
 		}
 	}
 

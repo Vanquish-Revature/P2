@@ -21,7 +21,6 @@ const httpOptions = {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   username!: string;
   password!: String;
   result!: boolean;
@@ -29,6 +28,7 @@ export class LoginComponent implements OnInit {
   Credentials = {withCredentials: true};
   response : any;
   msgError = "";
+  usrid : any;
   constructor(private _http : HttpClient, private router : Router) { }
 
   ngOnInit(): void {
@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
 
   Loginuser()
   {
-    let user = {username: this.username,
+    let user = {
+                username: this.username,
                 password : this.password};
     let Credentials = {withCredentials:true};
     console.log(this.username);
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit {
       {
         next : (v) => this.router.navigate(['/plants']),
         error : (e) => console.error(this.msgError = "Invalid Credentials, Please Enter a valid user name or password"),
-        complete: () => window.localStorage.setItem("username", this.username)
+        complete: () =>  localStorage.setItem("username", this.username)
       }
       );
   }
