@@ -23,9 +23,16 @@ public class UserService {
 		User users = aDAO.getUserById(id);
 		return users;
 	}
-	public static User getUserByUserName(String user_name) { 
-		User users = aDAO.getUserByUsername(user_name);
-		return users;
+	public static List<User> getUserByUserName(String user_name) throws Exception { 
+		List<User> users = aDAO.getUserByUsername(user_name);
+		if(users.get(0).getUser_ID() != 0) 
+		{
+			return users;
+		}
+		else 
+		{
+			throw new Exception();
+		}
 	}
 	public static List<User> getAllUsers(){
 		List<User> users = aDAO.getAllUsers();
@@ -39,25 +46,27 @@ public class UserService {
 		System.out.println(user.getLastName());
 //		System.out.println("User success register");
 	}
-	public static User login(String username, String password) throws SQLException{
-		User user;
+	public static int login(String username, String password) throws SQLException{
+		List<User> Checkusername = aDAO.getUserByUsername(username);
 		try 
 		{
-			user = aDAO.getUserByUsername(username);
-			if(user!= null && password.equals(user.getPassword())) 
+			User check = Checkusername.get(0);
+			String usersname = check.getUsername();
+			String passwords = check.getPassword();
+			if(usersname.equals(username) && passwords.equals(password)) 
 			{
 				System.out.println("Logged in sucess!");
-				return user;
+				return 1;
 			}
-			else if (user != null && !password.equals(user.getPassword())) 
+			else if (usersname.equals(username)  && (!passwords.equals(password))) 
 			{
 				System.out.println("Wrong password");
-				return null;
+				return 0;
 			}
 			else 
 			{
 				System.out.println("User does not exist");
-				return null;
+				return 0;
 			}
 					
 		}
@@ -67,10 +76,10 @@ public class UserService {
 			e.printStackTrace();
 		}
 //		return aDAO.login(username, password);
-		return null;
+		return 0;
 	}
-	public static void updateUser(User user, String username, String password , String firstname, String lastname) throws SQLException{
-		aDAO.updateUser(user,username,password,firstname,lastname);
+	public static void updateUser(User user) throws SQLException{
+		aDAO.updateUser(user);
 	}
 
 }

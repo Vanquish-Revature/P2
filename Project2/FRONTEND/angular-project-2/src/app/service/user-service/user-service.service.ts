@@ -32,14 +32,23 @@ export class UserServiceService {
   // }
     getUser(username:any)
     {
-      return this.Http.get( "http://localhost:3000/rainforest/user/Username/?" + username)
+      return this.Http.get( "http://localhost:3000/rainforest/user/Username/?username=" + username)
       .pipe(map(res=>
         {
           return res;
-        }))
-      // let param1 = new HttpParams().set('username',username);
-      // return this.Http.get<User[]>(this.url2,{params:param1});
+        }));
+   
     }   
+    // getUserByID(user_id: any)
+    // {
+    //   return this.Http.put("http://localhost:3000/rainforest/user/updateUser/" + user_id + "/")
+    //   .pipe(map(
+    //     res =>
+    //     {
+    //       return res;
+    //     }
+    //   ))
+    // }
 
   
  

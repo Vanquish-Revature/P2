@@ -31,7 +31,7 @@ public class UserController {
 	// Login, register, update password, update username, get all, get by id
   public static UserDAO ud;
   public static UserService us;
-  User u = new User();
+  User u;
 	@Autowired
 	public UserController(UserDAO dao) {
 		this.ud = dao;
@@ -59,19 +59,20 @@ public class UserController {
 		}
 	}
 	
+//	@RequestMapping(value = "/Username",method=RequestMethod.GET) 
 	@GetMapping("/Username")
-	public ResponseEntity<User> getUserByName(@RequestParam("username") String user_name)
+	public ResponseEntity<List<User>> getUserByName(@RequestParam(value = "username", required = false) String user_name) throws Exception
 	{
-//		u = us.getUserByUserName(user_name);
+		List<User>u = ud.getUserByUsername(user_name);
 		if(user_name == null) 
 		{
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
 		}
 		else 
 		{
-			if(us.getUserByUserName(user_name) != null) 
+			if(ud.getUserByUsername(user_name) != null) 
 			{
-				u =us.getUserByUserName(user_name);
+				
 				return ResponseEntity.ok(u);
 				
 			}
@@ -106,10 +107,10 @@ public class UserController {
 		{
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("0");
 		}
-		if(us.login(user.getUsername(), user.getPassword())!=null) {
-			user = us.login(user.getUsername(), user.getPassword());
-			u = user;
-		return ResponseEntity.ok("1");
+		if(us.login(user.getUsername(), user.getPassword())!=0) {
+//			user = us.login(user.getUsername(), user.getPassword());
+//			u = user;
+			return ResponseEntity.ok("1");
 		} else {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("0");
 		}
@@ -132,13 +133,14 @@ public class UserController {
 //			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 //		}
 	}
-	@PutMapping("/updateUser")
-	public ResponseEntity<User> updateUser(@PathVariable("user")User user, String username, String password , String firstname, String lastname){ 
+	@PutMapping("/updateUser/{user_id}")
+	public ResponseEntity<User> updateUser(@PathVariable("user_id") int usr_Id){ 
+			User u = us.getUserById(usr_Id);
 			try {
-				ud.updateUser(user,username,password,firstname,lastname);
-				return ResponseEntity.ok(user);
+				ud.updateUser(u);
+				return ResponseEntity.ok(u);
 			} catch(Exception e) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
 			}
 	}
 }

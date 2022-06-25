@@ -24,26 +24,24 @@
       Show Profile
     </button>
     {{username}} name is {{username}} -->
-    <div>
       <form>
-      <div class="card col-md-3"> 
+      <div class="card col-md-3" *ngFor="let user of profile"> 
               <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
-              <label for = "username" class = "uName">  Username : {{profile.username}} </label> 
+              <label for = "username" class = "uName">  Username : {{user.username}} </label> 
                <input type = "text" id = "username" formController = "username"  name = "username"> 
                <br>
-              <label for = "password" class = "password"> Password: {{profile.password}} </label> 
+              <label for = "password" class = "password"> Password: {{user.password}} </label> 
                <input type = "text" id = "password" formController = "password" name = "password">
                <br>
-              <label for = "firstName" class = "firstName"> First name: {{profile.firstname}} </label> 
+              <label for = "firstName" class = "firstName"> First name: {{user.firstname}} </label> 
                <input type = "text" id = "firstName" formController = "firstname" name = "firstName"> 
               <br>
-              <label for = "lastName" class = "lName"> Last name: {{profile.lastName}} </label> 
-               <input type = "text" id = "lastName" formController = "lastName" name = "lastName"> 
+              <label for = "lastName" class = "lName"> Last name: {{user.lastName}} </label> 
+               <input type = "text" id = "lastName" formController = "lastName" name = "lastname"> 
                <br>          
               <button type = "button" class="btn btn-primary">
                   Update User
               </button> 
       </div>
-      </form>
-    </div>    
+      </form> 
   </body>
