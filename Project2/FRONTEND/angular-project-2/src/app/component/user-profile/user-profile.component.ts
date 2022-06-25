@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { Location } from '@angular/common';
 import {UserServiceService} from 'src/app/service/user-service/user-service.service';
+import { LocalStorageService } from 'src/app/service/localStorage/local-storage.service';
 
 
 
@@ -24,25 +25,26 @@ const httpOptions= {
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  // usrID!: Number;
+  // usrsID!: Number;
   username!: String;
-  // password!: String;
-  // firstName!: String;
-  // lastname!: String;
+  password!: String;
+  firstName!: String;
+  lastname!: String;
   userget = {username : String, password : String , firstName : String, lastname : String};
   response : any ;
   test : any;
   msgError ="";
   Credentials = {withCredentials: true};
   profile: any;
-  // collection : User[] = [];
+  collection : User[] = [];
   found: boolean = false;
 
-  usrID = localStorage.getItem('username');
-
+  public usrID = window.localStorage.getItem("username");
+  // usrsID = localStorage.getItem('user_id');
   // s_username: any;
 
-  constructor(private _http : HttpClient, private api: UserServiceService, private activatedRoute : ActivatedRoute, private router: Router, private location: Location) { 
+  constructor(private _http : HttpClient, private api: UserServiceService, private activatedRoute : ActivatedRoute, private router: Router
+    , private location: Location) { 
 
   }
   // getUserByUserId(user_id : any):Observable<HttpResponse<User>>{
@@ -51,26 +53,29 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     // this.getUsers();
     this.username = this.activatedRoute.snapshot.params['username']
+    console.log(this.usrID);
+    // this.usrID = this.activatedRoute.snapshot.params['user_id']
     this.getUser();
+    // this.getUserByID();
 
   }
 
-  // getUsers()
-  // {
-  //   this.api.getUsers()
-  //   .subscribe(
-  //     response =>
-  //     {
-  //       console.log(response);
-  //       this.collection = response;
-  //     }
-  //   )
-  // }
-  onNameKeyUp(event:any)
+  getUsers()
   {
-    this.username = event.target.value;
-    this.found = false;
+    this.api.getUsers()
+    .subscribe(
+      response =>
+      {
+        console.log(response);
+        this.collection = response;
+      }
+    )
   }
+  // onNameKeyUp(event:any)
+  // {
+  //   this.username = event.target.value;
+  //   this.found = false;
+  // }
 
   // getUser()
   // {
@@ -94,14 +99,24 @@ export class UserProfileComponent implements OnInit {
   //     }  
   //   );
   getUser(){  
+    
     this.api.getUser(this.usrID)
     .subscribe
-      (data=>
+      (data  =>
       {
-        console.log(data);
+        console.log(data)
         this.profile = data;
       }
     );
+   }
+   getUserByID()
+   {
+      // this.api.getUserByID(this.usrsID)
+      // .subscribe( store =>
+      //   {
+      //     this.collection = store;
+
+      //   });
    }
 
 }

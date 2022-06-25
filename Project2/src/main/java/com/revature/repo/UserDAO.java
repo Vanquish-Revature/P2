@@ -6,6 +6,7 @@ import javax.persistence.Query;
 
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.revature.models.User;
 import com.revature.utilities.HibernateUtil;
@@ -57,42 +58,54 @@ public class UserDAO {
 //		}
 //	}
 	
-	public void updateUser(User user,String username, String password , String firstname, String lastname) {
-		Session ses = HibernateUtil.getSession();
-		Transaction tran = ses.beginTransaction();
-		boolean occured = false;
-		try {
-			if(password.equals(null) || password.equals("") || password == "") {
-				
-			} else {
-				user.setPassword(user.getPassword());
-				occured = true;
-			}
-			if(username.equals(null) || username.equals("") || username == "") {
-				
-			} else {
-				user.setUsername(user.getUsername());
-				occured = true;
-			}
-			if(firstname.equals(null) || firstname.equals("") || firstname == "") {
-				
-			} else {
-				user.setFirstname(user.getFirstname());
-				occured = true;
-			}
-			if(lastname.equals(null) || lastname.equals("") || lastname == "") {
-				
-			} else {
-				user.setLastName(user.getLastName());
-				occured = true;
-			}
-			if(occured == true) {
-				ses.merge(user);
-				tran.commit();
-			}
-		} catch(Exception e) {
+	public void updateUser(User user) {
+		try(Session ses = HibernateUtil.getSession())
+		{
+			Transaction tran = ses.beginTransaction();
+			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() +"', firstname = '" + user.getFirstname()
+			+ "', lastname = '" + user.getLastName() + "' WHERE  user_id = " + user.getUser_ID());
+			q.executeUpdate();
+			tran.commit();
+			HibernateUtil.closeSession();
+		}
+		catch(Exception e)
+		{
+			System.out.println("There was an error updating the user");
 			e.printStackTrace();
 		}
+//		boolean occured = false;
+//		try {
+//			if(user.getPassword().equals(null) || user.getPassword().equals("") || user.getPassword() == "") {
+//				
+//			} else {
+//				user.setPassword(user.getPassword());
+//				occured = true;
+//			}
+//			if(username.equals(null) || username.equals("") || username == "") {
+//				
+//			} else {
+//				user.setUsername(user.getUsername());
+//				occured = true;
+//			}
+//			if(firstname.equals(null) || firstname.equals("") || firstname == "") {
+//				
+//			} else {
+//				user.setFirstname(user.getFirstname());
+//				occured = true;
+//			}
+//			if(lastname.equals(null) || lastname.equals("") || lastname == "") {
+//				
+//			} else {
+//				user.setLastName(user.getLastName());
+//				occured = true;
+//			}
+//			if(occured == true) {
+//				ses.merge(user);
+//				tran.commit();
+//			}
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
 //		HibernateUtil.closeSession();
 	}
 	
@@ -111,25 +124,39 @@ public class UserDAO {
 		HibernateUtil.closeSession();
 		return user;
 	}
-	public User getUserByUsername(String username) {
-		Session ses = HibernateUtil.getSession();
-		Query q = ses.createQuery("FROM User WHERE username = ?1");
-		q.setParameter(1, username);
-		try 
+	public List<User> getUserByUsername(String username) {
+		try(Session ses = HibernateUtil.getSession())
 		{
-			List<User> userList = q.getResultList();
+			Query q = ses.createQuery("FROM User WHERE username =?1");
+			q.setParameter(1, username);
+			List<User> user = q.getResultList();
+//			ses.save(user);
 			HibernateUtil.closeSession();
-			u = userList.get(0);
-			
-			System.out.println("user exists");
-			return u;
+			return user;
 		}
-		catch(Exception e) 
+		catch(HibernateException e)
 		{
-			e.printStackTrace();
+			System.out.println("There was an error getting user by username");
 			return null;
-			
 		}
+//		Session ses = HibernateUtil.getSession();
+//		Query q = ses.createQuery("FROM User WHERE username = ?1");
+//		q.setParameter(1, username);
+//		try 
+//		{
+//			List<User> userList = q.getResultList();
+//			HibernateUtil.closeSession();
+//			u = userList.get(0);
+//			
+//			System.out.println("user exists");
+//			return u;
+//		}
+//		catch(Exception e) 
+//		{
+//			e.printStackTrace();
+//			return null;
+//			
+//		}
 //		User user = ses.get(User.class, username);
 //		HibernateUtil.closeSession();
 //		return user;
