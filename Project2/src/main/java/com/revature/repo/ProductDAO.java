@@ -61,7 +61,7 @@ public class ProductDAO {
 		return productList; //returns our list
 	}
 	
-	public Product getProductByName(String product_name){
+	public List<Product> getProductByName(String product_name){
 		
 //		Session ses = HibernateUtil.getSession(); //opens the session
 //		Query q = ses.createQuery("FROM Product m WHERE m.product.id = ?0"); 

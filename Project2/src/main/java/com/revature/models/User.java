@@ -98,9 +98,7 @@ public class User {
 	
 	
 	
-	
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> origin/cody
+
+

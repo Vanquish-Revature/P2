@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 //package com.revature.services;
 //import java.util.List;
@@ -49,7 +49,7 @@
 //	}
 //}
 
-=======
+
 package com.revature.services;
 
 import java.util.List;
@@ -90,4 +90,3 @@ public class CartService {
 	
 	
 }
->>>>>>> origin/cody
