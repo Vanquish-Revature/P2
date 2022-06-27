@@ -1,4 +1,4 @@
-<body>
+<!-- <body>
   <div>
     <div class="card text-center">
       <div class="card-body">
@@ -10,9 +10,9 @@
         <form>
             <button type="button" class="btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
             <label for="quantity">{{plant.quantity}}</label>
-            <button type="button" class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+            <button type="button" class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button> -->
             <!-- <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10"> -->
-            <br>
+            <!-- <br>
             <br>
         </form>
         <button type="button" class="btn btn-primary btn-block"  (click)=addtocart(plant)>Add to Cart</button>
@@ -23,4 +23,10 @@
         </button>
     </div>     
   </div>  
-</body>
+</body> -->
+<div>
+  <h3>{{plant.product_name}}</h3>
+  <h4>{{plant.price}}</h4>
+  <p>{{plant.description}}</p>
+  <button type="button" (click)=addtocart(plant)>Add to Cart</button>
+</div>

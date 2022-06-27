@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Form, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { CartService } from 'src/app/service/cart/cart.service';
 import { CheckoutService } from 'src/app/service/checkout/checkout.service';
 
@@ -21,8 +22,12 @@ export class CheckoutComponent implements OnInit {
   public plants : any = [];
   public grandTotal !: number;
   private checkoutService!: CheckoutService;
+  checkoutForm = this.formBuilder.group({
+    name:"",
+    address:""
+  });
 
-  constructor(private cartService: CartService, private _http: HttpClient) { }
+  constructor(private cartService: CartService, private _http: HttpClient, private formBuilder: FormBuilder, private reactive: ReactiveFormsModule) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -32,9 +37,12 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  submitOrder(order:any){
-    this.checkoutService.submitOrder(order);
+  onSubmit(): void {
+    this.plants = this.cartService.clearCart();
+    console.warn('Your order has been submitted!', this.checkoutForm.value);
+    this.checkoutForm.reset();
   }
+  
 }
 
 

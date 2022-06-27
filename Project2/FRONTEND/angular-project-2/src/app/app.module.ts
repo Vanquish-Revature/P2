@@ -15,7 +15,7 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -36,7 +36,7 @@ import { CheckoutComponent } from './component/checkout/checkout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

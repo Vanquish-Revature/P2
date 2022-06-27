@@ -14,7 +14,7 @@ import { CartService } from 'src/app/service/cart/cart.service';
 export class PlantDetailComponent implements OnInit {
 
   plant: any;
-  plants: Plant[] = [];
+  // plants: Plant[] = [];
   public plantList: any;
   id!: any;
   data: any;

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.models.Order;
 import com.revature.models.Product;
 import com.revature.repo.OrderDAO;
+import com.revature.repo.ProductDAO;
 import com.revature.services.OrderService;
 
 
@@ -47,26 +48,30 @@ public class OrderController {
 	
 	
 	@PostMapping("/checkout")
-	public ResponseEntity<Order> submitOrder(Order orders) {
+	public ResponseEntity<String> submitOrder(@RequestBody Order orders) {
 		try {
 		oService.submitOrder(orders);
-			return ResponseEntity.ok(orders);
+			return ResponseEntity.ok("Order submitted");
 		}
 		catch(Exception e) {
-	return ResponseEntity.status(HttpStatus.NO_CONTENT).body(orders);
+	return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Order error");
 	}
 	
 }
 
 
 
-	@PutMapping
-	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
-		if(p.getProduct_name()==null) {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
+	@PutMapping("/addToCart")
+	public ArrayList<Product> addToCart(Product p) {
+		ProductDAO pd = new ProductDAO();
+		if(pd.getProductByName(p.getProduct_name())!=null) {
+			cart.add(p);
+			System.out.println(cart);
+			return cart;
 		} else {
-			cart = oService.addToCart(p);
-			return ResponseEntity.status(202).body(cart);
+			System.out.println("item not found");
+			return cart;
+		
 		}
 	}
 

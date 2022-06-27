@@ -26,7 +26,8 @@ public class Product {
 	@Column(nullable = false)
 	private int quantity;
 	
-	public int getProduct_ID() {
+	
+public int getProduct_ID() {
 		return product_ID;
 	}
 	public void setProduct_ID(int product_ID) {
@@ -56,8 +57,7 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-//	public String getImage() {
+	//	public String getImage() {
 //		return image;
 //	}
 //	public void setImage(String image) {
@@ -67,12 +67,12 @@ public class Product {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Product(int product_ID, String product_name, String description, double price, int quantity) {
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;
 		this.description = description;
-//		this.image = image;
 		this.price = price;
 		this.quantity = quantity;
 	}

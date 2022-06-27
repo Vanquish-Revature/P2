@@ -64,7 +64,7 @@ public class OrderService {
 
 	ArrayList<Integer> product_id = new ArrayList<>();
 	public int submitOrder() {
-		o.setUser_ID(UserController.ud.getUserById(1));
+		o.setUser(UserController.ud.getUserById(1));
 		for(Product product : cartList) {
 			product_id.add(product.getProduct_ID());
 		}

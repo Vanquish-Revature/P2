@@ -12,7 +12,7 @@ export class CheckoutService {
 
   constructor(private httpClient: HttpClient) { }
 
-  submitOrder(order: {plant_name: string, quantity: number, total: number}){
+  onSubmit(order: {plant_name: string, quantity: number, total: number}){
     this.httpClient.post<any>(this.purchaseUrl, order);
 
   }

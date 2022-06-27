@@ -33,8 +33,10 @@ public class CartController {
 
 	private static Logger logger = LoggerFactory.getLogger(CartController.class);
 	
-	private CartService cartService;
-	private CartDAO cartDAO;
+
+	CartDAO cartDAO = new CartDAO();
+	
+	CartService cartService = new CartService(cartDAO);
 	
 	
 	@Autowired

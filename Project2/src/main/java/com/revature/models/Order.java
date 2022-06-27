@@ -25,7 +25,7 @@ public class Order {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "Product_ID")
+	@JoinColumn(name = "product_id")
 	private Product product;
 	
 	
@@ -34,26 +34,20 @@ public class Order {
 	private User User;
 	
 //	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@Column(name = "plant_name")
-	private String product_name;
-	
-	@Column(name = "subtotal")
-	private double subtotal;
-	
+//	@Column(name = "plant_name")
+//	private String product_name;
+//	
+//	@Column(name = "subtotal")
+//	private double subtotal;
+//	
 	@Column(name = "quantity")
 	private int quantity;   ///merge orderservice and cartservice and orderdao and cartDao
-	
-
+//	
+//
 	@Column(name = "total")
 	private double total;
 	
-	public double getSubtotal() {
-		return subtotal;
-	}
 
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
-	}
 
 	public double getTotal() {
 		return total;
@@ -63,7 +57,6 @@ public class Order {
 		this.total = total;
 	}
 
-
 	public int getOrder_ID() {
 		return order_ID;
 	}
@@ -72,28 +65,24 @@ public class Order {
 		this.order_ID = order_ID;
 	}
 
-	public Product getProduct_ID() {
+
+
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct_ID(Product product_id) {
-		this.product = product_id;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public User getUser_ID() {
+	
+
+	public User getUser() {
 		return User;
 	}
 
-	public void setUser_ID(User user_ID) {
-		this.User = user_ID;
-	}
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setUser(User user) {
+		User = user;
 	}
 
 
@@ -107,24 +96,39 @@ public class Order {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(order_ID, subtotal, product, product_name, quantity, User, total);
+		return Objects.hash(User, order_ID, product, quantity, total);
 	}
 
 
 
-	public Order(int order_ID, Product product, User User, String product_name, double subtotal, int quantity,
-			double total) {
+	
+	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		return Objects.equals(User, other.User) && order_ID == other.order_ID && Objects.equals(product, other.product)
+				&& quantity == other.quantity && Double.doubleToLongBits(total) == Double.doubleToLongBits(other.total);
+	}
+
+
+	
+	
+	public Order(int order_ID, Product product, com.revature.models.User user, int quantity, double total) {
 		super();
 		this.order_ID = order_ID;
 		this.product = product;
-		this.User = User;
-		this.product_name = product_name;
-		this.subtotal = subtotal;
+		User = user;
 		this.quantity = quantity;
 		this.total = total;
 	}
-	
-	
 
 	public Order() {
 		super();
@@ -133,8 +137,8 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [order_ID=" + order_ID + ", product_ID=" + product + ", user_ID=" + User + ", product_name="
-				+ product_name + ", subtotal=" + subtotal + ", quantity=" + quantity + ", total=" + total + "]";
+		return "Order [order_ID=" + order_ID + ", product=" + product + ", User=" + User + ", quantity=" + quantity
+				+ ", total=" + total + "]";
 	}
 
 	public void setProduct_ID(ArrayList<Integer> product_id) {

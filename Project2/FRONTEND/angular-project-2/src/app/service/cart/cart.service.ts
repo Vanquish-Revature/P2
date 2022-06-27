@@ -42,10 +42,10 @@ export class CartService {
     return this.totalItems.asObservable();
   }
 
-  addtoCart(product : any) {
+  addtoCart(plant : any) {
     // let alreadyExistsInCart: boolean = false;
     // let existingCartItem: any = undefined;
-    this.cartItemList.push(product);
+    this.cartItemList.push(plant);
     this.plantList.next(this.cartItemList);
     this.getTotalPrice();
     console.log(this.cartItemList)
@@ -115,6 +115,10 @@ export class CartService {
   }
 
 
+  clearCart() {
+    this.cartItemList = [];
+    return this.cartItemList;
+  }
 
   persistCartItems() {
     sessionStorage.setItem('cartItems', JSON.stringify(this.cartItemList));

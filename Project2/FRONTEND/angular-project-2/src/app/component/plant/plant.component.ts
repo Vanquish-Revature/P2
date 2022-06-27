@@ -16,7 +16,7 @@ export class PlantComponent implements OnInit {
   public totalItem : number = 0;
  
 
-  constructor(private cartService : CartService, private api: ApiService) { }
+  constructor(private cartService : CartService, private api: ApiService, private plantService: PlantService) { }
 
   ngOnInit(): void {
     this.api.getPlants()
@@ -31,6 +31,8 @@ export class PlantComponent implements OnInit {
   this.cartService.getProducts()
   .subscribe(res=>{
     this.totalItem = res.length;
+
+
   })
   }
 
@@ -40,7 +42,7 @@ export class PlantComponent implements OnInit {
   //   .subscribe(plants => this.plants = plants);
   // }
 
-  addtocart(plant: any){
-    this.cartService.addtoCart(plant);
+  addtocart(plantList: any){
+    this.cartService.addtoCart(plantList);
   }
 }
