@@ -47,6 +47,7 @@ public class UserService {
 //		System.out.println("User success register");
 	}
 	public static int login(String username, String password) throws SQLException{
+//		aDAO.login(username, password);
 		List<User> Checkusername = aDAO.getUserByUsername(username);
 		try 
 		{
@@ -74,12 +75,13 @@ public class UserService {
 		{
 			System.out.println("Login unsuccessful");
 			e.printStackTrace();
+			return 0;
 		}
 //		return aDAO.login(username, password);
-		return 0;
+//		return null;
 	}
-	public static void updateUser(User user) throws SQLException{
-		aDAO.updateUser(user);
-	}
+//	public static void updateUser(User user) throws SQLException{
+//		aDAO.updateUser(user);
+//	}
 
 }

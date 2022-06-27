@@ -30,23 +30,33 @@ public class UserDAO {
 	
 //	public User login(String username, String password) {
 //		Session ses = HibernateUtil.getSession();
-//		Query q = ses.createQuery("FROM user WHERE username =?1");
+//		Query q = ses.createQuery("FROM User WHERE username =?1");
 //		q.setParameter(1, username);
 //		try{
 //			List<User> userList = q.getResultList();
 //			User login = ses.get(User.class, username);
+//			String usrname = login.getUsername();
+//			String paswrd = login.getPassword();
 //			HibernateUtil.closeSession();
 //			u = userList.get(0);
-			//Validate if the login was even successful though i'm unsure if it wouldn't just throw an error if login ended up null.
+//			Validate if the login was even successful though i'm unsure if it wouldn't just throw an error if login ended up null.
 //			if(login==null) {
 //				System.out.println("Login Failure: User not found");
-//				return null;
+//				return 0;
 //			}
-			//check to see if the password is correct
-//			if(login.getPassword()==password) {
+//			check to see if the password is correct
+//			if(usrname.equals(username) && paswrd.equals(password)) {
 //				login.setPassword(""); //This is unnecessary for the project, but this makes it so that once the password is checked it no longer persists in the object
 //				return login;
-//			} else {
+//				System.out.println("Logged in sucess!");
+//				return u;
+//			} 
+//			else if(usrname.equals(username) && (!paswrd.equals(password))) 
+//			{
+//				System.out.println("Wrong password");
+//				return null;
+//			}
+//			else {
 //				HibernateUtil.closeSession();
 //				System.out.println("Login Failure");
 //				return null;
@@ -63,9 +73,10 @@ public class UserDAO {
 		{
 			Transaction tran = ses.beginTransaction();
 			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() +"', firstname = '" + user.getFirstname()
-			+ "', lastname = '" + user.getLastName() + "' WHERE  user_id = " + user.getUser_ID());
+			+ "', lastName = '" + user.getLastName() + "' WHERE  User_id = " + user.getUser_ID());
 			q.executeUpdate();
 			tran.commit();
+//			ses.saveOrUpdate(user);
 			HibernateUtil.closeSession();
 		}
 		catch(Exception e)

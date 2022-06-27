@@ -14,12 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-
-@Component
 @Entity
 @Table(name = "orders")
 public class Order {

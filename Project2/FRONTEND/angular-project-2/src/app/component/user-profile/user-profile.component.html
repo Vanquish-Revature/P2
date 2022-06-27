@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="user-profile.component.css">
+<!-- <link rel="stylesheet" href="user-profile.component.css">
 <nav>
     <div class="navbar navbar-light bg-light shadow-sm">
       <div class="navbar-brand align-item-center d-flex">
@@ -17,29 +17,28 @@
       </button>
       </a>
     </div>
-  </nav>
+  </nav> -->
   <body>
-    <!-- <input type = "text" (keyup) = "onNameKeyUp($event)">
-    <button type = "button" class="btn btn-primary" (click)=getUser()>
-      Show Profile
-    </button>
-    {{username}} name is {{username}} -->
+      
       <form>
       <div class="card col-md-3" *ngFor="let user of profile"> 
               <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
+              <label for = "user_id" class = "uID">  User ID : {{user.user_ID}} </label> 
+               <input type = "text" id = "user_id" formController = "user_ID" [(ngModel)] = "user_ID" name = "user_id" style = " width : 400px" placeholder = "{{user.user_ID}}"> 
+               <br>
               <label for = "username" class = "uName">  Username : {{user.username}} </label> 
-               <input type = "text" id = "username" formController = "username"  name = "username"> 
+               <input type = "text" id = "username" formController = "username" [(ngModel)] = "username" name = "username" style = " width : 400px"> 
                <br>
               <label for = "password" class = "password"> Password: {{user.password}} </label> 
-               <input type = "text" id = "password" formController = "password" name = "password">
+               <input type = "text" id = "password" formController = "password"[(ngModel)] = "password" name = "password" style = " width : 400px">
                <br>
               <label for = "firstName" class = "firstName"> First name: {{user.firstname}} </label> 
-               <input type = "text" id = "firstName" formController = "firstname" name = "firstName"> 
+               <input type = "text" id = "firstName" formController = "firstname" [(ngModel)] = "firstname"name = "firstname" style = " width : 400px"> 
               <br>
               <label for = "lastName" class = "lName"> Last name: {{user.lastName}} </label> 
-               <input type = "text" id = "lastName" formController = "lastName" name = "lastname"> 
+               <input type = "text" id = "lastName" formController = "lastname" [(ngModel)] = "lastname" name = "lastname" style = " width : 400px"> 
                <br>          
-              <button type = "button" class="btn btn-primary">
+              <button type = "button" class="btn btn-primary" (click) = update()>
                   Update User
               </button> 
       </div>

@@ -86,6 +86,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@RequestBody User user) throws SQLException{
+<<<<<<< HEAD
 //		if(user.getUsername() == null) 
 //		{
 //			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("0");
@@ -105,11 +106,14 @@ public class UserController {
 //				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("0");
 //			}
 //		}
+=======
+		
+>>>>>>> origin/kevin
 		if(user.getUsername() == null) 
 		{
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("0");
 		}
-		if(us.login(user.getUsername(), user.getPassword())!=0) {
+		else if(us.login(user.getUsername(),user.getPassword()) != 0) {
 //			user = us.login(user.getUsername(), user.getPassword());
 //			u = user;
 			return ResponseEntity.ok("1");
@@ -135,17 +139,20 @@ public class UserController {
 //			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 //		}
 	}
-	@PutMapping("/updateUser/{user_id}")
-	public ResponseEntity<User> updateUser(@PathVariable("user_id") int usr_Id){ 
-			User u = us.getUserById(usr_Id);
+	@PutMapping("/updateUser")
+	public ResponseEntity<User> updateUser(@RequestBody User user){ 
 			try {
-				ud.updateUser(u);
-				return ResponseEntity.ok(u);
+				ud.updateUser(user);
+				return ResponseEntity.ok(user);
 			} catch(Exception e) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 			}
 	}
+<<<<<<< HEAD
 
 }
 
 
+=======
+}
+>>>>>>> origin/kevin

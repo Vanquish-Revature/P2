@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: PlantDetailComponent },
   { path: "plants", component: PlantComponent },
   { path: "cart", component: CartComponent},
-  {path: "userProfile", component: UserProfileComponent}, //will need to include/:id when connected to database
+  {path: "userProfile/:id", component: UserProfileComponent}, //will need to include/:id when connected to database
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "checkout", component: CheckoutComponent}

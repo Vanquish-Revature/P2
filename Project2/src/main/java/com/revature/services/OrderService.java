@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,7 @@ import com.revature.repo.OrderDAO;
 import com.revature.repo.ProductDAO;
 
 @Service
-
 @Scope("prototype")
-
 public class OrderService {
 	
 	static ArrayList<Product> cartList = new ArrayList<Product>();

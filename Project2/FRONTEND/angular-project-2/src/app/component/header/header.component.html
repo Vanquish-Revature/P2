@@ -1,4 +1,5 @@
-<nav>
+<nav >
+  <div *ngFor = "let user of profile">
     <div class="navbar navbar-light bg-light shadow-sm">
       <div class="navbar-brand align-item-center d-flex">
         <a routerLink="/dashboard">
@@ -6,7 +7,9 @@
         </a>
       </div>
       <button class="user">
-        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+        <a class = "userpic" routerLink = "/userProfile/{{user.user_ID}}">
+          <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+        </a>
       </button>
       <button class="cart">
         <a class="img" routerLink="/cart">
@@ -15,4 +18,5 @@
         </a>
     </button>
     </div>
+  </div>
   </nav>
