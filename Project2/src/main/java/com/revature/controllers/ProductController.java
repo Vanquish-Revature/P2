@@ -66,7 +66,7 @@ public class ProductController {
 	
 	@GetMapping("/ProductName")
 	public ResponseEntity<List<Product>> getByProductName(@PathVariable("product") String product_name){
-		List<Product> b = pd.getProductByName(product_name);
+		List<Product> b = (List<Product>) pd.getProductByName(product_name);
 		
 		if(b == null) {
 			return ResponseEntity.ok(b);

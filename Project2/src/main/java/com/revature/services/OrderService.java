@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.context.annotation.Scope;
-=======
->>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
 import org.springframework.stereotype.Service;
 
 import com.revature.controllers.AuthController;
@@ -19,10 +16,7 @@ import com.revature.repo.OrderDAO;
 import com.revature.repo.ProductDAO;
 
 @Service
-<<<<<<< HEAD
 @Scope("prototype")
-=======
->>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
 public class OrderService {
 	
 	static ArrayList<Product> cartList = new ArrayList<Product>();

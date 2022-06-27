@@ -99,8 +99,4 @@ public class User {
 	
 	
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
