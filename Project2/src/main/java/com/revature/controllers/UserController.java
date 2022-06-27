@@ -118,13 +118,12 @@ public class UserController {
 //		}
 	}
 	@PutMapping("/updateUser")
-	public ResponseEntity<List<User>> updateUser(@PathVariable("username") String user_name){ 
-			List<User> u = ud.getUserByUsername(user_name);
+	public ResponseEntity<User> updateUser(@RequestBody User user){ 
 			try {
-				ud.updateUser((User) u);
-				return ResponseEntity.ok(u);
+				ud.updateUser(user);
+				return ResponseEntity.ok(user);
 			} catch(Exception e) {
-				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(user);
 			}
 	}
 }

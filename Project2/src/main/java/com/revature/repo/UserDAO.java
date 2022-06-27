@@ -72,11 +72,11 @@ public class UserDAO {
 		try(Session ses = HibernateUtil.getSession())
 		{
 			Transaction tran = ses.beginTransaction();
-			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() +"', firstName = '" + user.getFirstname()
-			+ "', lastname = '" + user.getLastName() + "' WHERE  user_id = '" + user.getUser_ID());
+			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() +"', firstname = '" + user.getFirstname()
+			+ "', lastName = '" + user.getLastName() + "' WHERE  User_id = " + user.getUser_ID());
 			q.executeUpdate();
 			tran.commit();
-			ses.saveOrUpdate(user);
+//			ses.saveOrUpdate(user);
 			HibernateUtil.closeSession();
 		}
 		catch(Exception e)

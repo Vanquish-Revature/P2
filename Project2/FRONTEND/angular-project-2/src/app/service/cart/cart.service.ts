@@ -114,8 +114,6 @@ export class CartService {
     this.plantList.next(this.cartItemList);
   }
 
-
-
   persistCartItems() {
     sessionStorage.setItem('cartItems', JSON.stringify(this.cartItemList));
   }

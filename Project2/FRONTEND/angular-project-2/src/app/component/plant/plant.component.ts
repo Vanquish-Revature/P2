@@ -11,12 +11,13 @@ import { ApiService } from 'src/app/service/api/api.service';
   styleUrls: ['./plant.component.css']
 })
 export class PlantComponent implements OnInit {
-  // plants: Plant[] = [];
+  plants: Plant[] = [];
   public plantList : any;
   public totalItem : number = 0;
+
  
 
-  constructor(private cartService : CartService, private api: ApiService) { }
+  constructor(private cartService : CartService, private api: ApiService, private plantService : PlantService) { }
 
   ngOnInit(): void {
     this.api.getPlants()
@@ -25,6 +26,8 @@ export class PlantComponent implements OnInit {
         this.plantList.forEach((a:any) => {
       Object.assign(a,{quantity:1,total:a.price});
     });
+ 
+    this.getPlants();
     console.log(this.plantList);
   });
 
@@ -35,10 +38,11 @@ export class PlantComponent implements OnInit {
   }
 
 
-  // getPlants(): void {
-  //   this.plantService.getPlants()
-  //   .subscribe(plants => this.plants = plants);
-  // }
+  getPlants(): void {
+    this.plantService.getPlants()
+    .subscribe(plants => this.plants = plants);
+
+  }
 
   addtocart(plant: any){
     this.cartService.addtoCart(plant);

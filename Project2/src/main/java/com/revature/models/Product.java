@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -17,9 +18,11 @@ import javax.persistence.Lob;
 
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name ="product")
-
 	
 public class Product {
 	
@@ -32,8 +35,7 @@ public class Product {
 	@Column(name = "plant_name")
 	private String product_name;
 //	@Lob
-//	@Column(columnDefinition="MEDIUMBLOB")
-//	private String image;
+//	private byte[] image;
 	@Column(nullable = false)
 	private String description;
 	@Column(nullable = false)
@@ -67,42 +69,49 @@ public class Product {
 	public int getQuantity() {
 		return quantity;
 	}
+	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	
-//	public String getImage() {
+//	public byte[] getImage() {
 //		return image;
 //	}
-//	public void setImage(String image) {
-//		this.image = image;
+//	public byte[] setImage(byte[] image) {
+//		return this.image = image;
 //	}
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
-	public Product(int product_ID, String product_name, double price, int quantity) {
+	public Product(int product_ID, String product_name, String description, double price, int quantity) {
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;
 		this.description = description;
-//		this.image = image;
 		this.price = price;
 		this.quantity = quantity;
 	}
-
-	
-
 	@Override
 	public String toString() {
-		return "Product [product_ID=" + product_ID + ", product_name=" + product_name + ", price=" + price
-				+ ", quantity=" + quantity + "]";
+		return "Product [product_ID=" + product_ID + ", product_name=" + product_name + ", description=" + description
+				+ ", price=" + price + ", quantity=" + quantity + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, product_ID, product_name, quantity);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + product_ID;
+		result = prime * result + ((product_name == null) ? 0 : product_name.hashCode());
+		result = prime * result + quantity;
+		return result;
 	}
 
 	@Override
@@ -114,8 +123,23 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price) && product_ID == other.product_ID
-				&& Objects.equals(product_name, other.product_name) && quantity == other.quantity;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (product_ID != other.product_ID)
+			return false;
+		if (product_name == null) {
+			if (other.product_name != null)
+				return false;
+		} else if (!product_name.equals(other.product_name))
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		return true;
 	}
 
 	

@@ -28,9 +28,9 @@ export class UserProfileComponent implements OnInit {
   user_ID!: String;
   username!: String;
   password!: String;
-  firstName!: String;
+  firstname!: String;
   lastname!: String;
-  userget = { user_id : String, username : String, password : String , firstName : String, lastname : String};
+  userget = { user_ID : String, username : String, password : String , firstname : String, lastname : String};
   response : any ;
   test : any;
   msgError ="";
@@ -43,7 +43,7 @@ export class UserProfileComponent implements OnInit {
   // public usrsID = window.localStorage.getItem('user_id');
   // s_username: any;
 
-  constructor(private _http : HttpClient, private api: UserServiceService, private activatedRoute : ActivatedRoute, private router: Router
+  constructor(private _http : HttpClient, private apis: UserServiceService, private activatedRoute : ActivatedRoute, private router: Router
     , private location: Location) { 
 
   }
@@ -58,7 +58,7 @@ export class UserProfileComponent implements OnInit {
 
   getUsers()
   {
-    this.api.getUsers()
+    this.apis.getUsers()
     .subscribe(
       response =>
       {
@@ -70,7 +70,7 @@ export class UserProfileComponent implements OnInit {
 
   getUser(){  
     
-    this.api.getUser(this.usrID)
+    this.apis.getUser(this.usrID)
     .subscribe
       (data  =>
       {
@@ -84,20 +84,21 @@ export class UserProfileComponent implements OnInit {
      
       let userget = 
       {
-        user_ID : this.user_ID, 
+        user_ID : this.user_ID,
         username : this.username,
         password : this.password,
-        firstName : this.firstName,
-        lastname : this.lastname
+        firstname : this.firstname,
+        lastName : this.lastname
       };
+      console.log(this.user_ID);
       console.log(this.username);
       console.log(this.password);
-      console.log(this.firstName);
+      console.log(this.firstname);
       console.log(this.lastname);
-      console.log(userget);
+      console.log(this.userget);
 
       let Credentials = {withCredentials: true};
-      let response = this._http.put<any>("http://localhost:3000/rainforest/user/updateUser/?username=" + this.usrID,userget,httpOptions).subscribe(
+      let response = this._http.put<any>("http://localhost:3000/rainforest/user/updateUser",userget,httpOptions).subscribe(
         {
           next: (v) => this.router.navigate(['/login']),  
           error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
