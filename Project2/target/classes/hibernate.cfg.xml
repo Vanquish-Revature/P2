@@ -24,23 +24,12 @@
 		<!-- It will wipe all tables and data, and recreate it -->
 
         <!-- We HAVE TO map our classes here in order for them to get picked up by Hibernate-->
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <mapping class="com.revature.models.User"/>
-        <mapping class="com.revature.models.Product"/>
-=======
-=======
->>>>>>> origin/kevin
+
         <mapping class="com.revature.models.Order"/>
         <mapping class="com.revature.models.Cart"/>
         <mapping class="com.revature.models.Product"/>
         <mapping class="com.revature.models.User"/>
-<<<<<<< HEAD
->>>>>>> origin/cody
-=======
->>>>>>> origin/kevin
-        
-        
+
 
      </session-factory>
  </hibernate-configuration>
