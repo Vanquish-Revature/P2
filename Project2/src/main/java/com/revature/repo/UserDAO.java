@@ -17,6 +17,7 @@ public class UserDAO {
 		try(Session session = HibernateUtil.getSession())
 		{
 			session.save(user);
+<<<<<<< HEAD
 			HibernateUtil.closeSession();
 			return 1;
 		}
@@ -79,6 +80,59 @@ public class UserDAO {
 			ses.saveOrUpdate(user);
 			HibernateUtil.closeSession();
 		}
+=======
+			HibernateUtil.closeSession();
+			return 1;
+		}
+		catch(Exception e) 
+		{
+			System.out.println("There was an error inserting the user");
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+//	public User login(String username, String password) {
+//		Session ses = HibernateUtil.getSession();
+//		Query q = ses.createQuery("FROM user WHERE username =?1");
+//		q.setParameter(1, username);
+//		try{
+//			List<User> userList = q.getResultList();
+//			User login = ses.get(User.class, username);
+//			HibernateUtil.closeSession();
+//			u = userList.get(0);
+			//Validate if the login was even successful though i'm unsure if it wouldn't just throw an error if login ended up null.
+//			if(login==null) {
+//				System.out.println("Login Failure: User not found");
+//				return null;
+//			}
+			//check to see if the password is correct
+//			if(login.getPassword()==password) {
+//				login.setPassword(""); //This is unnecessary for the project, but this makes it so that once the password is checked it no longer persists in the object
+//				return login;
+//			} else {
+//				HibernateUtil.closeSession();
+//				System.out.println("Login Failure");
+//				return null;
+//			}
+//		} catch(Exception e) {
+//			HibernateUtil.closeSession();
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
+	
+	public void updateUser(User user) {
+		try(Session ses = HibernateUtil.getSession())
+		{
+			Transaction tran = ses.beginTransaction();
+			Query q = ses.createQuery("UPDATE User SET username = '" + user.getUsername() + "', password = '" + user.getPassword() +"', firstname = '" + user.getFirstname()
+			+ "', lastname = '" + user.getLastName() + "' WHERE  user_id = " + user.getUser_ID());
+			q.executeUpdate();
+			tran.commit();
+			HibernateUtil.closeSession();
+		}
+>>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
 		catch(Exception e)
 		{
 			System.out.println("There was an error updating the user");

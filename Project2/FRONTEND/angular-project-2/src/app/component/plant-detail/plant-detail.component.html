@@ -1,40 +1,22 @@
-<link rel="stylesheet" href="plant-detail.component.css">
-<nav>
-  <div class="navbar navbar-light bg-light shadow-sm">
-    <div class="navbar-brand align-item-center d-flex">
-      <button type="button">
-        <a routerLink="/dashboard">
-          <strong style="font-size: 30px;">Rainforest</strong>
-        </a>
-      </button>
-    </div>
-    <button class="user">
-      <a class = "userpic" routerLink = "/userProfile">
-        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
-      </a>
-    </button>
-    <a class="img" routerLink="/cart">
-      <button class="cart">
-        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
-    </button>
-    </a>
-  </div>
-</nav>
 <body>
-  <div *ngIf="plant">
-    <div class="card col-md-3">
-        <label for="plant-name">Plant name:{{plant.name}} </label>
+  <div>
+    <div class="card text-center">
+      <div class="card-body">
+        <h1 class="card-title">{{plant.product_name}}</h1>
+      </div>
         <img class = "plant_image" src = {{plant.image}} alt = "image"> 
         <p class = "plant_description"> {{plant.description}}</p>
         <label for = "plant-price"> Price: ${{plant.price}}</label>
         <form>
-            <label for="quantity"> Quantity:</label>
-            <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10">
+            <button type="button" class="btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <label for="quantity">{{plant.quantity}}</label>
+            <button type="button" class="btn"><i class="fa fa-minus" aria-hidden="true"></i></button>
+            <!-- <input type = "number" id=" quantity" name = "quantity" min = "1" max = "10"> -->
             <br>
             <br>
-            <input type = "submit">
         </form>
-        <button type="button">
+        <button type="button" class="btn btn-primary btn-block"  (click)=addtocart(plant)>Add to Cart</button>
+        <button type="button" class="btn btn-primary btn-block">
           <a routerLink="/plants">
             Go Back
           </a>

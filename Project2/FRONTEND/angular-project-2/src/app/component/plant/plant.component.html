@@ -1,42 +1,19 @@
-<link rel="stylesheet" href="plant.component.css">
-<nav>
-  <div class="navbar navbar-light bg-light shadow-sm">
-    <div class="navbar-brand align-item-center d-flex">
-      <button type="button">
-        <a routerLink="/dashboard">
-          <strong style="font-size: 30px;">Rainforest</strong>
-        </a>
-      </button>    
-    </div>
-    <button class="user">
-      <a class = "userpic" routerLink = "/userProfile">
-        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
-      </a>
-    </button>
-    <button class="cart">
-      <a class="img" routerLink="/cart">
-      <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
-      </a>
-  </button>
-  </div>
-</nav>
 <div class="container">
   <div class="row">
-    <ng-container *ngFor="let plant of plants">
+    <ng-container *ngFor="let plant of plantList">
       <div class="card col-md-3">
-      <button class="card-basket">
+      <button class="card-basket"  (click)=addtocart(plant)>
         <img src="assets/icons/basket2.png" alt="cart" style="height:30px; width: 30px;">
-        <!--add to cart-->
       </button>
       <a class="img" routerLink="/plants">
-        <img src={{plant.image}} alt="cactus">
+        <img src={{plant.image}} alt="plant_image">
+        </a>
       <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">
-      <a routerLink="/detail/{{plant.id}}">
-        {{plant.name}}
+      <a routerLink="/detail/{{plant.product_ID}}">
+        {{plant.product_name}}
       </a>
       </h5>
       <p><strong>Price:</strong> ${{plant.price}}</p>
-      </a>
     </div>
   </ng-container>
   </div>

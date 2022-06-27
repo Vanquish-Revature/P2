@@ -1,8 +1,8 @@
 package com.revature.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,52 +65,32 @@ public class ProductController {
 	
 	
 	@GetMapping("/ProductName")
-	public ResponseEntity<Product> getByProductName(@RequestParam("product") String product_name){
-//		List<Product> b = pd.getProductByName(product_name);
+	public ResponseEntity<List<Product>> getByProductName(@PathVariable("product") String product_name){
+		List<Product> b = pd.getProductByName(product_name);
 		
-//		if(b == null) {
-//			return ResponseEntity.ok(b);
-//		} else {
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(b);
-//		}
-		if(product_name == null) 
-		{
-			Product p = null;
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+		if(b == null) {
+			return ResponseEntity.ok(b);
+		} else {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(b);
 		}
-		else 
-		{
-			if(ps.getProductByName(product_name) != null) 
-			{
-				Product p = ps.getProductByName(product_name);
-				return ResponseEntity.ok(p);
-			}
-			else 
-			{
-				Product p = null;
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(p);
-			}
-		}
-		
 	}
 	
-//	@PostMapping("/insertProduct")
-//	public ResponseEntity<Product> insertProduct(@PathVariable("product")Product product){
-//		try {
-//			pd.insertProduct(product);
-//			return ResponseEntity.ok(product);
-//		} catch(Exception e) { 
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(product);
-//		}
-//	}
+	@PostMapping("/insertProduct")
+	public ResponseEntity<Product> insertProduct(@PathVariable("product")Product product){
+		try {
+			pd.insertProduct(product);
+			return ResponseEntity.ok(product);
+		} catch(Exception e) { 
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(product);
+		}
+	}
 	@PutMapping("/updateProduct")
-	public ResponseEntity<Product> updateProduct(@RequestBody Product product){ 
+	public ResponseEntity<Product> updateProduct(@PathVariable("product")Product product, String product_name, double price, int quantity){ 
 			try {
-				pd.updateProductWithHQL(product);
+				pd.updateProductWithSessionMethod(product) ;
 				return ResponseEntity.ok(product);
 			} catch(Exception e) {
 				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(product);
 			}
 	}
 }
-	

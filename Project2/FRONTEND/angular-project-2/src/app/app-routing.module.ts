@@ -7,6 +7,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { LoginComponent} from './component/login/login.component'
 import {RegisterComponent} from './component/register/register.component'
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "cart", component: CartComponent},
   {path: "userProfile", component: UserProfileComponent}, //will need to include/:id when connected to database
   {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent}
+  {path: "register", component: RegisterComponent},
+  {path: "checkout", component: CheckoutComponent}
 ];
 
 @NgModule({

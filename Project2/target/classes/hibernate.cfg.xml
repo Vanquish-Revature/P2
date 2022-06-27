@@ -24,15 +24,10 @@
 		<!-- It will wipe all tables and data, and recreate it -->
 
         <!-- We HAVE TO map our classes here in order for them to get picked up by Hibernate-->
-<<<<<<< HEAD
-        <mapping class="com.revature.models.User"/>
-        <mapping class="com.revature.models.Product"/>
-=======
         <mapping class="com.revature.models.Order"/>
         <mapping class="com.revature.models.Cart"/>
         <mapping class="com.revature.models.Product"/>
         <mapping class="com.revature.models.User"/>
->>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
         
         
 

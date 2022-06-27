@@ -14,7 +14,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './component/user-profile/user-profile.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
+<<<<<<< HEAD
 import {UserServiceService} from 'src/app/service/user-service/user-service.service';
+=======
+import { CheckoutComponent } from './component/checkout/checkout.component';
+
+
+>>>>>>> 0c297824bd2937f2e378cfb1c61c9235b49ff66e
 
 
 @NgModule({
@@ -28,7 +34,8 @@ import {UserServiceService} from 'src/app/service/user-service/user-service.serv
     MessagesComponent,
     UserProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

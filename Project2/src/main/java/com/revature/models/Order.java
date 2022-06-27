@@ -1,9 +1,12 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-@Component
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -21,22 +23,46 @@ public class Order {
 	@Column(name = "order_id")
 	private int order_ID;
 	
-	@ManyToOne
-	@JoinColumn(name = "Product_id")
-	private int product_ID;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "Product_ID")
+	private Product product;
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	private int user_ID;
+	private User User;
 	
-	@Column(name = "product_name")
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Column(name = "plant_name")
 	private String product_name;
 	
-	@Column(name = "price")
-	private double price;
+	@Column(name = "subtotal")
+	private double subtotal;
 	
 	@Column(name = "quantity")
-	private int quantity;
+	private int quantity;   ///merge orderservice and cartservice and orderdao and cartDao
+	
+
+	@Column(name = "total")
+	private double total;
+	
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
 
 	public int getOrder_ID() {
 		return order_ID;
@@ -46,20 +72,20 @@ public class Order {
 		this.order_ID = order_ID;
 	}
 
-	public int getProduct_ID() {
-		return product_ID;
+	public Product getProduct_ID() {
+		return product;
 	}
 
-	public void setProduct_ID(int product_ID) {
-		this.product_ID = product_ID;
+	public void setProduct_ID(Product product_id) {
+		this.product = product_id;
 	}
 
-	public int getUser_ID() {
-		return user_ID;
+	public User getUser_ID() {
+		return User;
 	}
 
-	public void setUser_ID(int user_ID) {
-		this.user_ID = user_ID;
+	public void setUser_ID(User user_ID) {
+		this.User = user_ID;
 	}
 
 	public String getProduct_name() {
@@ -70,13 +96,6 @@ public class Order {
 		this.product_name = product_name;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public int getQuantity() {
 		return quantity;
@@ -88,42 +107,39 @@ public class Order {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(order_ID, price, product_ID, product_name, quantity, user_ID);
+		return Objects.hash(order_ID, subtotal, product, product_name, quantity, User, total);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Order other = (Order) obj;
-		return order_ID == other.order_ID && Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
-				&& product_ID == other.product_ID && Objects.equals(product_name, other.product_name)
-				&& quantity == other.quantity && user_ID == other.user_ID;
-	}
 
-	@Override
-	public String toString() {
-		return "Order [order_ID=" + order_ID + ", product_ID=" + product_ID + ", user_ID=" + user_ID + ", product_name="
-				+ product_name + ", price=" + price + ", quantity=" + quantity + "]";
-	}
 
-	public Order(int order_ID, int product_ID, int user_ID, String product_name, double price, int quantity) {
+	public Order(int order_ID, Product product, User User, String product_name, double subtotal, int quantity,
+			double total) {
 		super();
 		this.order_ID = order_ID;
-		this.product_ID = product_ID;
-		this.user_ID = user_ID;
+		this.product = product;
+		this.User = User;
 		this.product_name = product_name;
-		this.price = price;
+		this.subtotal = subtotal;
 		this.quantity = quantity;
+		this.total = total;
 	}
+	
+	
 
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Order [order_ID=" + order_ID + ", product_ID=" + product + ", user_ID=" + User + ", product_name="
+				+ product_name + ", subtotal=" + subtotal + ", quantity=" + quantity + ", total=" + total + "]";
+	}
+
+	public void setProduct_ID(ArrayList<Integer> product_id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
