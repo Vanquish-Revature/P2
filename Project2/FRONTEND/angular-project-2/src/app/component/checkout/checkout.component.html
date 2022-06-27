@@ -1,0 +1,53 @@
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Order Summary</h1>
+  </div>  
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div class="card-body text-center">
+      <!-- <h5 class="card-title">User's first and last name pulled from userid</h5> -->
+      <div class="table-responsive">
+        <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let plant of plants; let i = index">
+            <td style="width: 12%" >{{plant.product_name}}</td>
+            <td style="width: 12%">${{plant.price}}</td>
+            <td style="width: 12%">{{plant.quantity}}</td>
+            <td style="width: 12%">${{plant.total}}</td>
+          </tr>
+        </tbody>
+          <tr>
+            <td><strong>Grand Total : ${{grandTotal}}</strong></td>  
+          </tr>
+      </table>
+      <!-- <div class="checkout">
+        <button class="btn btn-success" (click)=onSubmit(plant)>Submit Order</button>
+      </div> -->
+      </div>
+    </div>
+    
+      <!-- <div>
+        <label for="name">
+          Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+      <div>
+        <label for="address">
+          Address
+        </label>
+        <input id="address" type="text" formControlName="address">
+      </div> -->
+      <button class="btn btn-success" type="submit">Submit Order</button>
+    </form>
+</div>
+

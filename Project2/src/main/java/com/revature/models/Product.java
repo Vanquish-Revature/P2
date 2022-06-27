@@ -9,8 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+=======
+import javax.persistence.Lob;
+>>>>>>> origin/cody
 import javax.persistence.Table;
 
 @Entity
@@ -25,17 +29,73 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int product_ID;
+<<<<<<< HEAD
 	@Column(nullable = false, unique = true, name = "plant_name") //unique constraint
 	private String product_name;
+=======
+	@Column(name = "plant_name")
+	private String product_name;
+//	@Lob
+//	@Column(columnDefinition="MEDIUMBLOB")
+//	private String image;
+	@Column(nullable = false)
+	private String description;
+	@Column(nullable = false)
+>>>>>>> origin/cody
 	private double price;
 	private int quantity;
 	
+<<<<<<< HEAD
+=======
+	
+public int getProduct_ID() {
+		return product_ID;
+	}
+	public void setProduct_ID(int product_ID) {
+		this.product_ID = product_ID;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	//	public String getImage() {
+//		return image;
+//	}
+//	public void setImage(String image) {
+//		this.image = image;
+//	}
+>>>>>>> origin/cody
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+<<<<<<< HEAD
 
 	public Product(int product_ID, String product_name, double price, int quantity) {
+=======
+	
+	public Product(int product_ID, String product_name, String description, double price, int quantity) {
+>>>>>>> origin/cody
 		super();
 		this.product_ID = product_ID;
 		this.product_name = product_name;

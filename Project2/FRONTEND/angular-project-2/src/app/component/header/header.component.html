@@ -1,3 +1,18 @@
-<div class="navbar navbar-dark bg-primary shadow-sm">
-
-</div>
+<nav>
+    <div class="navbar navbar-light bg-light shadow-sm">
+      <div class="navbar-brand align-item-center d-flex">
+        <a routerLink="/dashboard">
+          <strong style="font-size: 30px;">Rainforest</strong>
+        </a>
+      </div>
+      <button class="user">
+        <img src="assets/icons/person-circle.png" alt="basket" style="height:40px; width: 40px;">
+      </button>
+      <button class="cart">
+        <a class="img" routerLink="/cart">
+        <img src="assets/icons/basket2.png" alt="cart" style="height:40px; width: 40px;">
+        <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </a>
+    </button>
+    </div>
+  </nav>
