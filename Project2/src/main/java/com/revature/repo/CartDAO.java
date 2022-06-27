@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //
 ////package com.revature.repo;
 ////import com.revature.models.Cart;
@@ -48,7 +48,7 @@
 //}
 
 
-=======
+
 package com.revature.repo;
 
 
@@ -111,4 +111,4 @@ public class CartDAO {
 	
 	
 }
->>>>>>> origin/cody
+

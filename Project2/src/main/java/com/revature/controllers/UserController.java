@@ -95,11 +95,9 @@ public class UserController {
 //			if(ud.login(user.getUsername(), user.getPassword())!=null)
 //			{
 //				user = ud.login(user.getUsername(), user.getPassword());
-<<<<<<< HEAD
-//				u = user;
-=======
+
 				u = user;
->>>>>>> origin/cody
+
 //				return ResponseEntity.ok("1");
 //			}
 //			else 
@@ -147,8 +145,7 @@ public class UserController {
 				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(u);
 			}
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> origin/cody
+
+
