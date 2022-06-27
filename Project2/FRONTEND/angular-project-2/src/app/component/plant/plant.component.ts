@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/service/api/api.service';
   styleUrls: ['./plant.component.css']
 })
 export class PlantComponent implements OnInit {
-  plants: Plant[] = [];
+  // plants: Plant[] = [];
   public plantList : any;
   public totalItem : number = 0;
  
@@ -23,7 +23,7 @@ export class PlantComponent implements OnInit {
     .subscribe((res: any)=>{
         this.plantList = res;
         this.plantList.forEach((a:any) => {
-      Object.assign(a,{quantity:1, total:a.price});
+      Object.assign(a,{quantity:1,total:a.price});
     });
     console.log(this.plantList);
   });

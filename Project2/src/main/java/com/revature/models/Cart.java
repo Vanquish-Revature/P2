@@ -1,101 +1,169 @@
 package com.revature.models;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
-@Table(name = "Cart")
+@Table(name = "cart")
 public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(unique = true, nullable = false)
-	private String billingInfo;
-	@Column(unique = false, nullable = false)
-//	private List<Product> productsPurchased;
-//	@Column(unique = false, nullable = false)
-	private int amount;
-	@Column(unique = false, nullable = false)
-	private double subtotal;
-	@Column(unique = false, nullable = false)
-	private double discount;
-	@Column(unique = false, nullable = false)
-	private double total;
-	@Column(unique = false, nullable = false)
+	@Column(name = "CartItem_ID")
+	private int cartitem_ID;
 	
-	public int getAmount() {
-		return amount;
+	@ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "Product_ID")
+    private Product product;
+	
+	@Column(nullable = false)
+	private int quantity;
+	
+	@Column(nullable = false)
+	private double price;
+	
+
+	@Column(nullable = false)
+	private double totalPrice;
+	
+	@CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
+    @Column(name="CREATED_TS",columnDefinition = "datetime", nullable=false, updatable = false)
+	private Date createdTime;
+    
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
+    @Column(name="UPDATED_TS",columnDefinition = "datetime", nullable=false, updatable = true)
+	private Date updatedTime;
+
+   
+
+
+
+
+	public int getQuantity() {
+		return quantity;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+
+
+
+
+	public double getPrice() {
+		return price;
 	}
-	public int getId() { 
-		return id;
+
+
+
+
+
+	public double getTotalPrice() {
+		return totalPrice;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+
+
+	public Date getCreatedTime() {
+		return createdTime;
 	}
-//	public List<Product> getProductsPurchased() {
-//		return productsPurchased;
-//	}
-//	public void setProductsPurchased(List<Product> productsPurchased) {
-//		this.productsPurchased = productsPurchased;
-//	}
-	public String getBillingInfo() {
-		return billingInfo;
+
+
+
+
+	public Date getUpdatedTime() {
+		return updatedTime;
 	}
-	public void setBillingInfo(String billingInfo) {
-		this.billingInfo = billingInfo;
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
-	public double getSubtotal() {
-		return subtotal;
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
+
+	
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public double getDiscount() {
-		return discount;
+
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
 	}
-	public void setDiscount(double discount) {
-		this.discount = discount;
+
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
 	}
-	public double getTotal() {
-		return total;
+
+	public int getCartitem_ID() {
+		return cartitem_ID;
 	}
-	public void setTotal(double total) {
-		this.total = total;
+
+	public User getUser() {
+		return user;
 	}
-	public Cart() {
-		super();
+
+
+
+
+	public Product getProduct() {
+		return product;
 	}
-	public Cart(int id, String billingInfo, List<Product> productsPurchased, int amount, double subtotal,
-			double discount, double total) {
-		super();
-		this.id = id;
-		this.billingInfo = billingInfo;
-//		this.productsPurchased = productsPurchased;
-		this.amount = amount;
-		this.subtotal = subtotal;
-		this.discount = discount;
-		this.total = total;
+
+
+
+
+	public void setCartitem_ID(int cartitem_ID) {
+		this.cartitem_ID = cartitem_ID;
 	}
-	@Override
-	public String toString() {
-		return "Invoice [id=" + id + ", billingInfo=" + billingInfo + ", productsPurchased=" + 
-				 ", amount=" + amount + ", subtotal=" + subtotal + ", discount=" + discount + ", total=" + total + "]";
+
+
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

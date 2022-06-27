@@ -4,6 +4,7 @@ import { PlantService } from 'src/app/service/plant-service/plant.service'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiService } from 'src/app/service/api/api.service';
+import { CartService } from 'src/app/service/cart/cart.service';
 
 @Component({
   selector: 'app-plant-detail',
@@ -12,46 +13,53 @@ import { ApiService } from 'src/app/service/api/api.service';
 })
 export class PlantDetailComponent implements OnInit {
 
-  // plant: Plant | undefined;
-  
+  plant: any;
+  plants: Plant[] = [];
   public plantList: any;
   id!: any;
   data: any;
+  public totalItem: any;
  
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private api: ApiService
+    private api: ApiService,
+    private cartService: CartService
 
   ) { }
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id']
-    this.getPlantDetail();
-  //   this.api.getPlantDetail(this.id)
-  //   .subscribe((res: any)=>{
-  //       this.plantList = res;
-  //       this.plantList.forEach((a:any) => {
-  //     Object.assign(a,{quantity:1, total:a.price});
-  //   });
-  //   console.log(this.plantList);
-  // });
+    this.api.getPlantDetail(this.id)
+    .subscribe((res: any)=>{
+          this.plant=res;
+          this.plant.forEach((a:any) => {
+            Object.assign(a,{quantity:1,total:a.price});
+          });
+          console.log(this.plant);
+        });
+  
+
+    this.cartService.getProducts()
+    .subscribe(res=>{
+      this.totalItem = res.length;
+    })
   }
 
-  getPlantDetail(){
-    this.api.getPlantDetail(this.id).subscribe(data=>
-      {
-        this.data=data;
-        console.log(this.data);
-      }
-      )
-  }
 
+    
   goBack(): void {
     this.location.back();
   }
 
+  addtocart(plant: any){
+    this.cartService.addtoCart(plant);
+
+  }
+
+
 }
+
 
 
 

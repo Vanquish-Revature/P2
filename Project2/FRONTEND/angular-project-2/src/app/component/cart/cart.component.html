@@ -22,15 +22,23 @@
                             <td><img style="width: 120px;" src="{{plants.image}}" alt=""></td>
                             <td style="width: 25%;">{{plant.description}}</td>
                             <td style="width: 12%;">${{plant.price}}</td>
-                            <td style="width: 12%;">{{plant.quantity}}</td>
-                            <td style="width: 12%;">{{plant.total}}</td>
-                            <!-- <td>
-                                <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <td style="width: 12%;">
+                            <button type="button" class="btn"><i class="fa fa-plus" (click)="decrease(plant)"></i></button>
+                            <span>{{plant.quantity}}</span>
+                            <button type="button" class="btn"><i class="fa fa-minus" (click)="increase(plant)"></i></button>
                             </td>
-                        </tr> -->
+                                <!-- <td style="width: 12%;">{{plant.quantity}}</td> -->
+                                <!-- <input type="number" value="{{total}}"> -->
+                                <!-- <input type = "number" id=" {{total}}" name = "quantity" min = "1" max = "10"> -->
+                                <!-- <td style="width: 12%;">{{plant.quantity}}</td> -->
+                            <td style="width: 12%;">{{plant.quantity * plant.price}}</td>
+                            <td>
+                                <button (click)="removeItem(i)" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="4"></td>
-                            <!-- <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td> -->
+                            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
                             <td><button routerLink="/plants" class="btn btn-primary">Shop More</button></td>
                             <td><button routerLink="/checkout" class="btn btn-success">Checkout</button></td>
                             <td><strong>Grand Total : ${{grandTotal}}</strong></td>

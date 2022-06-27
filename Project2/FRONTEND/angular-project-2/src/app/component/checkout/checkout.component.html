@@ -4,7 +4,8 @@
   </div>  
     <div class="card-body text-center">
       <!-- <h5 class="card-title">User's first and last name pulled from userid</h5> -->
-      <table class="table table-responsive table-striped">
+      <div class="table-responsive">
+        <table class="table">
         <thead class="thead-dark">
           <tr>
             <th>Product Name</th>
@@ -15,19 +16,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let plant of plants; let i = index">
-            <td style="width: 12%">{{plant.product_name}}</td>
+            <td style="width: 12%" >{{plant.product_name}}</td>
             <td style="width: 12%">${{plant.price}}</td>
             <td style="width: 12%">{{plant.quantity}}</td>
             <td style="width: 12%">{{plant.total}}</td>
           </tr>
-          <tr>
-            <td colspan="4"></td>
-            <td><button class="btn btn-success">Submit Order</button></td>
-            <td><strong>Grand Total : ${{grandTotal}}</strong></td> 
-            
-        </tr>
         </tbody>
+          <tr>
+            <td><strong>Grand Total : ${{grandTotal}}</strong></td>  
+          </tr>
       </table>
+      <div class="checkout">
+        <button class="btn btn-success" (click)=submitOrder(plants)>Submit Order</button>
+      </div>
+      </div>
     </div>
 </div>
 

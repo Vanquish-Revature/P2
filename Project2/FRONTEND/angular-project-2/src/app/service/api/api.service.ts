@@ -26,4 +26,6 @@ getPlantDetail(id:any){
   ))
   
 }
+
+
 }

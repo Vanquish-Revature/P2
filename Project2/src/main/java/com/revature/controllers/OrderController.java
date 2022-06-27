@@ -30,7 +30,7 @@ import com.revature.services.OrderService;
 @RequestMapping(value="/order")
 @CrossOrigin
 public class OrderController {
-//	ArrayList<Product> cart;
+	ArrayList<Product> cart;
 	
 	OrderService oService = new OrderService();
 
@@ -59,16 +59,16 @@ public class OrderController {
 }
 
 
-//
-//	@PutMapping
-//	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
-//		if(p.getProduct_name()==null) {
-//			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
-//		} else {
-//			cart = oService.addToCart(p);
-//			return ResponseEntity.status(202).body(cart);
-//		}
-//	}
+
+	@PutMapping
+	public ResponseEntity<ArrayList<Product>> addToCart(@RequestBody Product p) {
+		if(p.getProduct_name()==null) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(cart);
+		} else {
+			cart = oService.addToCart(p);
+			return ResponseEntity.status(202).body(cart);
+		}
+	}
 
 }
 

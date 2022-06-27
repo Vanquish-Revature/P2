@@ -11,7 +11,7 @@ import { MessageService } from '../message/message.service';
 })
 export class PlantService {
 
-  private plantsUrl = 'http://localhost:7100/rainforest/products/'; 
+ 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,7 +26,7 @@ export class PlantService {
   }
 
   getPlant(id: number): Observable<Plant> {
-    const plant = Plants.find(p => p.id === id)!;
+    const plant = Plants.find(p => p.product_ID === id)!;
     this.messageService.add(`PlantService: fetched plant id=${id}`);
     return of(plant);
 }

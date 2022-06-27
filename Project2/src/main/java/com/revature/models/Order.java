@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -21,15 +23,18 @@ public class Order {
 	@Column(name = "order_id")
 	private int order_ID;
 	
+	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "Product_ID")
-	private Product product_ID;
+	private Product product;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-	private User user_ID;
+	private User User;
 	
-	@Column(nullable = false, unique = true, name = "plant_name")
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@Column(name = "plant_name")
 	private String product_name;
 	
 	@Column(name = "subtotal")
@@ -68,19 +73,19 @@ public class Order {
 	}
 
 	public Product getProduct_ID() {
-		return product_ID;
+		return product;
 	}
 
 	public void setProduct_ID(Product product_id) {
-		this.product_ID = product_id;
+		this.product = product_id;
 	}
 
 	public User getUser_ID() {
-		return user_ID;
+		return User;
 	}
 
 	public void setUser_ID(User user_ID) {
-		this.user_ID = user_ID;
+		this.User = user_ID;
 	}
 
 	public String getProduct_name() {
@@ -102,17 +107,17 @@ public class Order {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(order_ID, subtotal, product_ID, product_name, quantity, user_ID, total);
+		return Objects.hash(order_ID, subtotal, product, product_name, quantity, User, total);
 	}
 
 
 
-	public Order(int order_ID, Product product_ID, User user_ID, String product_name, double subtotal, int quantity,
+	public Order(int order_ID, Product product, User User, String product_name, double subtotal, int quantity,
 			double total) {
 		super();
 		this.order_ID = order_ID;
-		this.product_ID = product_ID;
-		this.user_ID = user_ID;
+		this.product = product;
+		this.User = User;
 		this.product_name = product_name;
 		this.subtotal = subtotal;
 		this.quantity = quantity;
@@ -128,7 +133,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [order_ID=" + order_ID + ", product_ID=" + product_ID + ", user_ID=" + user_ID + ", product_name="
+		return "Order [order_ID=" + order_ID + ", product_ID=" + product + ", user_ID=" + User + ", product_name="
 				+ product_name + ", subtotal=" + subtotal + ", quantity=" + quantity + ", total=" + total + "]";
 	}
 

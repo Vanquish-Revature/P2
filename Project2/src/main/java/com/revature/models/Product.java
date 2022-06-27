@@ -14,7 +14,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Product_ID")
 	private int product_ID;
-	@Column(name = "plant_name",unique = true, nullable = false)
+	@Column(name = "plant_name")
 	private String product_name;
 //	@Lob
 //	@Column(columnDefinition="MEDIUMBLOB")
