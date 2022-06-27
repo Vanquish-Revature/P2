@@ -45,13 +45,13 @@ export class LoginComponent implements OnInit {
     let Credentials = {withCredentials:true};
     console.log(this.username);
     console.log(this.password); 
-          
+    console.log(this.user);
     console.log(Credentials);
 
     let response = this._http.post<any>("http://localhost:3000/rainforest/user/login",user,httpOptions).subscribe(
       {
         next : (v) =>  this.router.navigate(['/plants']),
-        error : (e) => console.error(this.msgError = "Invalid Credentials, Please Enter a valid user name or password"),
+        error : (e) => this.msgError = "Invalid Credentials, Please Enter a valid user name or password",
         complete: () =>  window.localStorage.setItem("username",(this.username))
       }
       );

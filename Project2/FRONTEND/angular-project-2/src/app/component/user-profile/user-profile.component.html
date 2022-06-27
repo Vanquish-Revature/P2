@@ -27,19 +27,22 @@
       <form>
       <div class="card col-md-3" *ngFor="let user of profile"> 
               <img class = "picture" src = "assets/icons/person-circle.png" alt = "picture">
+              <label for = "user_id" class = "uid">  UserID : {{user.user_id}} </label> 
+              <input type = "number" id = "userid" formController = "user_id" [(ngModel)] = "user_ID" name = "user_id"> 
+               <br>
               <label for = "username" class = "uName">  Username : {{user.username}} </label> 
-               <input type = "text" id = "username" formController = "username"  name = "username"> 
+               <input type = "text" id = "username" formController = "username" [(ngModel)] = "username" name = "username"> 
                <br>
               <label for = "password" class = "password"> Password: {{user.password}} </label> 
-               <input type = "text" id = "password" formController = "password" name = "password">
+               <input type = "text" id = "password" formController = "password"[(ngModel)] = "password" name = "password">
                <br>
               <label for = "firstName" class = "firstName"> First name: {{user.firstname}} </label> 
-               <input type = "text" id = "firstName" formController = "firstname" name = "firstName"> 
+               <input type = "text" id = "firstName" formController = "firstName" [(ngModel)] = "firstName"name = "firstName"> 
               <br>
               <label for = "lastName" class = "lName"> Last name: {{user.lastName}} </label> 
-               <input type = "text" id = "lastName" formController = "lastName" name = "lastname"> 
+               <input type = "text" id = "lastName" formController = "lastname" [(ngModel)] = "lastname" name = "lastname"> 
                <br>          
-              <button type = "button" class="btn btn-primary">
+              <button type = "button" class="btn btn-primary" (click) = update()>
                   Update User
               </button> 
       </div>

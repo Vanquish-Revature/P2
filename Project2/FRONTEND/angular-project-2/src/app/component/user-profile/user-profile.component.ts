@@ -25,12 +25,12 @@ const httpOptions= {
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  // usrsID!: Number;
+  user_ID!: String;
   username!: String;
   password!: String;
   firstName!: String;
   lastname!: String;
-  userget = {username : String, password : String , firstName : String, lastname : String};
+  userget = { user_id : String, username : String, password : String , firstName : String, lastname : String};
   response : any ;
   test : any;
   msgError ="";
@@ -40,23 +40,19 @@ export class UserProfileComponent implements OnInit {
   found: boolean = false;
 
   public usrID = window.localStorage.getItem("username");
-  // usrsID = localStorage.getItem('user_id');
+  // public usrsID = window.localStorage.getItem('user_id');
   // s_username: any;
 
   constructor(private _http : HttpClient, private api: UserServiceService, private activatedRoute : ActivatedRoute, private router: Router
     , private location: Location) { 
 
   }
-  // getUserByUserId(user_id : any):Observable<HttpResponse<User>>{
-  //   return this._http.get("http://localhost:3000/user/userID/" +user_id+"/", {observe: "response"}) as Observable<HttpResponse<User>>
-  //   }
   ngOnInit(): void {
     // this.getUsers();
     this.username = this.activatedRoute.snapshot.params['username']
     console.log(this.usrID);
-    // this.usrID = this.activatedRoute.snapshot.params['user_id']
     this.getUser();
-    // this.getUserByID();
+    
 
   }
 
@@ -71,33 +67,7 @@ export class UserProfileComponent implements OnInit {
       }
     )
   }
-  // onNameKeyUp(event:any)
-  // {
-  //   this.username = event.target.value;
-  //   this.found = false;
-  // }
 
-  // getUser()
-  // {
-  //   // let usrget = {username: this.username};
-  //    this._http.get<any>('http://localhost:3000/rainforest/user/Username/?username='+ this.usrID,httpOptions).subscribe(
-  //       (data:User[]) => 
-  //       { 
-  //         if(data.length)
-  //         {
-  //           // this.profile = data;
-  //           this.username = data[0].username;
-  //           this.password = data[0].password;
-  //           this.firstName = data[0].firstname;
-  //           this.lastname = data[0].lastName;
-  //           // console.log(response);
-  //           console.log(data[2].firstname);
-  //           this.found = true;
-  //         }
-  //       }
-  //   );
-  //     }  
-  //   );
   getUser(){  
     
     this.api.getUser(this.usrID)
@@ -109,14 +79,31 @@ export class UserProfileComponent implements OnInit {
       }
     );
    }
-   getUserByID()
+   update()
    {
-      // this.api.getUserByID(this.usrsID)
-      // .subscribe( store =>
-      //   {
-      //     this.collection = store;
+     
+      let userget = 
+      {
+        user_ID : this.user_ID, 
+        username : this.username,
+        password : this.password,
+        firstName : this.firstName,
+        lastname : this.lastname
+      };
+      console.log(this.username);
+      console.log(this.password);
+      console.log(this.firstName);
+      console.log(this.lastname);
+      console.log(userget);
 
-      //   });
+      let Credentials = {withCredentials: true};
+      let response = this._http.put<any>("http://localhost:3000/rainforest/user/updateUser/?username=" + this.usrID,userget,httpOptions).subscribe(
+        {
+          next: (v) => this.router.navigate(['/login']),  
+          error: (e) => console.error(this.msgError="User name or email  is alredy registred"),
+          complete: () => console.info('Complete')
+        }
+      );
+        console.log(response);
    }
-
 }
