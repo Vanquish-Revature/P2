@@ -4,9 +4,9 @@
   <div class="card-header">
     <h1>Order Summary</h1>
   </div>  
-  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <!-- <form> -->
     <div class="card-body text-center">
-      <!-- <h5 class="card-title">User's first and last name pulled from userid</h5> -->
+      <h5 class="card-title">{{usrID}}</h5>
       <div class="table-responsive">
         <table class="table">
         <thead class="thead-dark">
@@ -29,9 +29,9 @@
             <td><strong>Grand Total : ${{grandTotal}}</strong></td>  
           </tr>
       </table>
-      <!-- <div class="checkout">
-        <button class="btn btn-success" (click)=onSubmit(plant)>Submit Order</button>
-      </div> -->
+      <div class="checkout">
+        <button class="btn btn-success" (click)=onSubmit()>Submit Order</button>
+      </div>
       </div>
     </div>
     
@@ -47,7 +47,7 @@
         </label>
         <input id="address" type="text" formControlName="address">
       </div> -->
-      <button class="btn btn-success" type="submit">Submit Order</button>
-    </form>
+      <!-- <button class="btn btn-success" type="submit" (click)=onSubmit()>Submit Order</button>
+    </form> -->
 </div>
 

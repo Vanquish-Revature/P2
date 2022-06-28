@@ -20,8 +20,10 @@ export class CartComponent implements OnInit {
   public plant: any;
   public total: any;
   
-  
-  constructor(private cartService : CartService, private api: ApiService) { }
+  // public plantID = window.localStorage.getItem('product_ID');
+
+  constructor(private cartService : CartService, 
+    private api: ApiService) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()

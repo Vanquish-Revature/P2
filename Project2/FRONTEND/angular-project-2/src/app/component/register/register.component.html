@@ -1,21 +1,32 @@
- <body>
+
+  <body>
     <div class="card col-md-3">
         <h3> Registration Portal</h3>
         <form>
             <label for = "username"> Username: </label><br>
-            <input type = "text" id="username"> 
+            <input type = "text" id="username" formController = "username" [(ngModel)] = "username" placeholder="Username" name = "username" > 
             <br>
             <br>
+
             <label for = "password"> Password: </label><br>
-            <input type = "text" id="password"> 
+            <input type = "text" id="password"formController = "password" [(ngModel)] = "password" placeholder="password" name = "password"> 
             <br>
             <br>
-            <button type = "button" class ="btn">
-                <input type = "submit">
+
+            <label for = "firstName"> First Name: </label><br>
+            <input type = "text" id="firstName" formController = "firstName" [(ngModel)] = "firstName" placeholder="Tyler" name = "fistName"> 
+            <br>
+            <br>
+
+            <label for = "lastName"> Last Name: </label><br>
+            <input type = "text" id="lastName" formController = "lastName" [(ngModel)] = "lastName" placeholder="Jenkins" name = "lastName"> 
+            <br>
+            <br>
+            
+            <button type = "submit" class ="btn" (click) = registerusr()>
+                Register
             </button>
-            <button type = "button" class ="btn">
-              <a routerLink="/login">Log-In</a>
-          </button>
+            <small class="text-danger">{{msgError}}</small>
         </form>
     </div>
 </body>
