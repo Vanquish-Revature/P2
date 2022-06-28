@@ -18,6 +18,7 @@ public class OrderDAO {
 	
 	
 	public int submitOrder(Order orders) {
+		System.out.println(orders.getTotal());
 		try(Session ses = HibernateUtil.getSession()){
 		ses.save(orders);
 		HibernateUtil.closeSession();

@@ -34,6 +34,8 @@ export class PlantComponent implements OnInit {
   this.cartService.getProducts()
   .subscribe(res=>{
     this.totalItem = res.length;
+
+
   })
   }
 
@@ -44,7 +46,7 @@ export class PlantComponent implements OnInit {
 
   }
 
-  addtocart(plant: any){
-    this.cartService.addtoCart(plant);
+  addtocart(plantList: any){
+    this.cartService.addtoCart(plantList);
   }
 }

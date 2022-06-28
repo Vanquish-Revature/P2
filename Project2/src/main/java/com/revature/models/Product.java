@@ -42,7 +42,8 @@ public class Product {
 	private double price;
 	private int quantity;
 	
-	public int getProduct_ID() {
+	
+public int getProduct_ID() {
 		return product_ID;
 	}
 	public void setProduct_ID(int product_ID) {
@@ -85,7 +86,6 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 	
-
 	public Product(int product_ID, String product_name, String description, double price, int quantity) {
 		super();
 		this.product_ID = product_ID;

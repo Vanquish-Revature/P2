@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,17 +46,17 @@ public class Cart {
 	@Column(nullable = false)
 	private double totalPrice;
 	
-	@CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
-    @Column(name="CREATED_TS",columnDefinition = "datetime", nullable=false, updatable = false)
-	private Date createdTime;
-    
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
-    @Column(name="UPDATED_TS",columnDefinition = "datetime", nullable=false, updatable = true)
-	private Date updatedTime;
+//	@CreationTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
+//    @Column(name="CREATED_TS",columnDefinition = "datetime", nullable=false, updatable = false)
+//	private Date createdTime;
+//    
+//    @UpdateTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss z", timezone="UTC")
+//    @Column(name="UPDATED_TS",columnDefinition = "datetime", nullable=false, updatable = true)
+//	private Date updatedTime;
 
    
 
@@ -84,16 +85,16 @@ public class Cart {
 
 
 
-	public Date getCreatedTime() {
-		return createdTime;
-	}
-
-
-
-
-	public Date getUpdatedTime() {
-		return updatedTime;
-	}
+//	public Date getCreatedTime() {
+//		return createdTime;
+//	}
+//
+//
+//
+//
+//	public Date getUpdatedTime() {
+//		return updatedTime;
+//	}
 
 
 	public void setQuantity(int quantity) {
@@ -110,13 +111,13 @@ public class Cart {
 		this.totalPrice = totalPrice;
 	}
 
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
-	}
-
-	public void setUpdatedTime(Date updatedTime) {
-		this.updatedTime = updatedTime;
-	}
+//	public void setCreatedTime(Date createdTime) {
+//		this.createdTime = createdTime;
+//	}
+//
+//	public void setUpdatedTime(Date updatedTime) {
+//		this.updatedTime = updatedTime;
+//	}
 
 	public int getCartitem_ID() {
 		return cartitem_ID;
@@ -152,6 +153,63 @@ public class Cart {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+
+
+
+	public Cart(int cartitem_ID, User user, Product product, int quantity, double price, double totalPrice) {
+		super();
+		this.cartitem_ID = cartitem_ID;
+		this.user = user;
+		this.product = product;
+		this.quantity = quantity;
+		this.price = price;
+		this.totalPrice = totalPrice;
+	}
+
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cartitem_ID, price, product, quantity, totalPrice, user);
+	}
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cart other = (Cart) obj;
+		return cartitem_ID == other.cartitem_ID
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
+				&& Objects.equals(product, other.product) && quantity == other.quantity
+				&& Double.doubleToLongBits(totalPrice) == Double.doubleToLongBits(other.totalPrice)
+				&& Objects.equals(user, other.user);
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Cart [cartitem_ID=" + cartitem_ID + ", user=" + user + ", product=" + product + ", quantity=" + quantity
+				+ ", price=" + price + ", totalPrice=" + totalPrice + "]";
+	}
+
+
+
+
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 

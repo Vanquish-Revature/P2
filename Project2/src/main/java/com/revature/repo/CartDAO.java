@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -18,10 +19,16 @@ import com.revature.utilities.HibernateUtil;
 public class CartDAO {
 	
 	public int addProductToCart(Cart cartItem) {
-		Session ses = HibernateUtil.getSession();
+		try(Session ses = HibernateUtil.getSession()){
 		ses.save(cartItem);
 		HibernateUtil.closeSession();
 		return 1;
+		}
+		catch(HibernateException e) {
+			System.out.println("There was an error submitting your cart item!");
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 	//We will use HQL to update
