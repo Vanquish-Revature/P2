@@ -15,6 +15,9 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import {UserServiceService} from 'src/app/service/user-service/user-service.service';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -28,13 +31,15 @@ import {UserServiceService} from 'src/app/service/user-service/user-service.serv
     MessagesComponent,
     UserProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserServiceService],
   bootstrap: [AppComponent],

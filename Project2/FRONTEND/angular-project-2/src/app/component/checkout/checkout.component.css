@@ -1,0 +1,29 @@
+button {
+    border: none;
+    background-color: transparent;
+  }
+
+  .btn {
+      background-color: blue;
+  }
+
+  .card {
+    height: 60vh;
+    margin: 25px;
+    padding: 25px;
+}
+
+.center img {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: 162px;
+    width: 250px;
+    margin: 20px 0px;
+}
+
+/* .table {
+    height: 100%;
+    width: 100%;
+} */

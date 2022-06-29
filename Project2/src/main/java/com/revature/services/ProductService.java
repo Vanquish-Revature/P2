@@ -34,8 +34,8 @@ public class ProductService {
 	
 	}
 	
-	public static void addProduct(Product product) {
-		ProductDAO.insertProduct(product); 
-}
+//	public static void addProduct(Product product) {
+//		return pd.insertProduct(product); 
+//}
 	
 	}
